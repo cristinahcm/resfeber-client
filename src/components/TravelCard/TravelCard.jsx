@@ -5,24 +5,25 @@ import React, { useEffect, useState } from "react"
 const API_URL = 'http://localhost:5005';
 
 const TravelCard = ({
-  images,
-  location,
+  destination,
   route,
+  origin,
   budget,
   initialDate,
   finalDate,
-  type,
+  typeTravel,
+  images,
 }) => {
 
   return (
     <div className="travel-card">
       <div className="travel-card-header">
-      <div className="travel-card-body-image">
-          <img src={images} alt="img" />
-        </div>
         <div className="travel-card-header-title">
-          <h2>{location}</h2>
+          <h1>{destination}</h1>
         </div>
+        <div className="travel-card-origin">
+        <h5>{origin}</h5>
+      </div>
         <div className="travel-card-header-date">
           <p>{initialDate}</p>
           <p>{finalDate}</p>
@@ -33,7 +34,10 @@ const TravelCard = ({
         <div className="travel-card-body-text">
           <p>{route}</p>
           <span>{budget}</span>
-          <p>{type}</p>
+          <p>{typeTravel}</p>
+          <div className="travel-card-body-image">
+          <img src={images} alt="img" />
+        </div>
         </div>
       </div>
     </div>

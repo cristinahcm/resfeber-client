@@ -6,6 +6,8 @@ import Signup from "./pages/Signup"
 import Profile from "./pages/Profile"
 import Oops from "./pages/Oops"
 import PrivateRoute from "./components/ProtectedRoute/PrivateRoute"
+import CreateTravelPage from "./pages/CreateTravelPage"
+import UserInfoPage from "./pages/UserInfoPage"
 
 function App() {
 	return (
@@ -13,8 +15,10 @@ function App() {
 			<BottomAppBar />
 			<Routes>
 				<Route path="/" element={<Home />} />
+				<Route path="/createTravel" element={<CreateTravelPage />} />
 				<Route path="/signin" element={<Signin />} />
 				<Route path="/signup" element={<Signup />} />
+				<Route path="/UserInfoPage" element={<UserInfoPage />} />
 				<Route element={<PrivateRoute />}>
 					<Route path="/profile" element={<Profile />} />
 				</Route>

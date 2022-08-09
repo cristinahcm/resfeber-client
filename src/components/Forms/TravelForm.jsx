@@ -6,7 +6,7 @@ const API_URL = 'http://localhost:5005';
 
 const TravelForm = () => {
   const [travel, setTravel] = useState({
-    location: "",
+    destination: "",
     route: "",
     budget: "",
     initialDate: "",
@@ -24,13 +24,13 @@ const TravelForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try{
-      const response = await axios.post(`${API_URL}/api/travels`, travel , payload , {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      const response = await axios.post(`${API_URL}/api/travels/upload`, travel)
+        //headers: {
+         //Authorization: `Bearer ${token}`,
+        //},
+      
       console.log(travel);
-      navigate("/travels"); }
+      navigate("/"); }
       catch(err){console.log(err)}
    
   }
@@ -38,13 +38,13 @@ const TravelForm = () => {
     <div className="container">
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="location">Location</label>
+          <label htmlFor="destination">Destination</label>
           <input
             type="text"
             className="form-control"
-            id="location"
-            name="location"
-            placeholder="Enter location"
+            id="destination"
+            name="destination"
+            placeholder="Enter destination"
             onChange={handleChange}
           />
         </div>
@@ -55,14 +55,25 @@ const TravelForm = () => {
             className="form-control"
             id="route"
             name="route"
-            placeholder="Enter route"
+            placeholder="Description of your route"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="origin">Origin</label>
+          <input
+            type="text"
+            className="form-control"
+            id="origin"
+            name="origin"
+            placeholder="Origin"
             onChange={handleChange}
           />
         </div>
         <div className="form-group">
           <label htmlFor="budget">Budget</label>
           <input
-            type="text"
+            type="number"
             className="form-control"
             id="budget"
             name="budget"
@@ -93,15 +104,14 @@ const TravelForm = () => {
           />  
         </div>
         <div className="form-group">  
-          <label htmlFor="type">Type</label>
-          <input  
-            type="text" 
-            className="form-control"  
-            id="type"
-            name="type"
-            placeholder="Enter type"
-            onChange={handleChange}
-          />
+          <label htmlFor="typeTravel">Type</label>
+          <select name="typeTravel" className="form-select" id="typeTravel">
+            <option value="Eco">Eco</option>
+            <option value="Family">Family</option>
+            <option value="Friends">Friends</option>
+            <option value="Only Women">Only Women</option>
+            <option value="Solo">Solo</option>
+          </select>
         </div>
         <div className="form-group">
           <label htmlFor="images">Images</label>

@@ -13,7 +13,7 @@ const FormSignUp = () => {
 		try {
 			const res = await service.signup(user)
 			console.log(res)
-			navigate("/signin")
+			navigate("/userInfoPage")
 		} catch (error) {
 			setError(e.message)
 		}

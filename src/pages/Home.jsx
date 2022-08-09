@@ -10,7 +10,8 @@ const Home = () => {
 	const [travels, setTravels] = useState([]);
 
 const getAllTravels = async () => {
-  const response = await axios.get(`${API_URL}/api/travels`)
+	const response = await axios.get(`${API_URL}/api/travels`)
+  console.log(response.data)
   setTravels(response.data)
 }
 useEffect(() => {
@@ -23,13 +24,15 @@ useEffect(() => {
 					console.log(travel)
 					return (
 						<TravelCard
-						images={travel.images}
-						location={travel.location}
+						destination={travel.destination}
 						route={travel.route}
+						origin={travel.origin}
 						budget={travel.budget}
 						initialDate={travel.initialDate}
 						finalDate={travel.finalDate}
-						type={travel.type}
+						typeTravel={travel.typeTravel}
+						images={travel.images}
+						//type={travel.type}
 						/>
 					)
 				})}
