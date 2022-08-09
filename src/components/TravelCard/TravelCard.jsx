@@ -3,15 +3,7 @@ import axios from "axios"
 
 const API_URL = 'http://localhost:5005';
 
-const TravelCard = ({initialDate,
-  finalDate,
-  place,
-  type,
-  origin,
-  destination,
-  route,
-  budget,
-  images}) => {
+const TravelCard = () => {
 
 const [travels, setTravels] = useState([])
 const getAllTravels = async () => {
