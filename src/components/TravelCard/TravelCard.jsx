@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-
+import axios from "axios"
 
 
 const API_URL = 'http://localhost:5005';
@@ -13,10 +13,13 @@ const TravelCard = ({
   finalDate,
   typeTravel,
   images,
+  deleteTravel,
+  id
 }) => {
 
+
   return (
-    <div className="travel-card">
+    <div className="travel-card" key={id}>
       <div className="travel-card-header">
         <div className="travel-card-header-title">
           <h1>{destination}</h1>
@@ -39,7 +42,9 @@ const TravelCard = ({
           <img src={images} alt="img" />
         </div>
         </div>
+        <button onClick={deleteTravel}>Delete me !</button>
       </div>
+
     </div>
   );
 }
