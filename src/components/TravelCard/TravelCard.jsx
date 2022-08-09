@@ -1,41 +1,39 @@
 import React, { useEffect, useState } from "react"
-import axios from "axios"
+
 
 
 const API_URL = 'http://localhost:5005';
 
-const TravelCard = () => {
-
-const [travels, setTravels] = useState([])
-const getAllTravels = async () => {
-  const response = await axios.get(`${API_URL}/api/travels`)
-  setTravels(response.data)
-}
-useEffect(() => {
-  getAllTravels()
-}, [])
- 
+const TravelCard = ({
+  images,
+  location,
+  route,
+  budget,
+  initialDate,
+  finalDate,
+  type,
+}) => {
 
   return (
     <div className="travel-card">
       <div className="travel-card-header">
       <div className="travel-card-body-image">
-          <img src={setTravels.images} alt="img" />
+          <img src={images} alt="img" />
         </div>
         <div className="travel-card-header-title">
-          <h2>{setTravels.place}</h2>
+          <h2>{location}</h2>
         </div>
         <div className="travel-card-header-date">
-          <p>{setTravels.initialDate}</p>
-          <p>{setTravels.finalDate}</p>
+          <p>{initialDate}</p>
+          <p>{finalDate}</p>
         </div>
       </div>
       <div className="travel-card-body">
        
         <div className="travel-card-body-text">
-          <p>{setTravels.route}</p>
-          <span>{setTravels.budget}</span>
-          <p>{setTravels.type}</p>
+          <p>{route}</p>
+          <span>{budget}</span>
+          <p>{type}</p>
         </div>
       </div>
     </div>
