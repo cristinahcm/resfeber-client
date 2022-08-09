@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import axios from "axios"
 
+
 const API_URL = 'http://localhost:5005';
 
 const TravelCard = () => {
@@ -19,22 +20,22 @@ useEffect(() => {
     <div className="travel-card">
       <div className="travel-card-header">
       <div className="travel-card-body-image">
-          <img src={images} alt="img" />
+          <img src={setTravels.images} alt="img" />
         </div>
         <div className="travel-card-header-title">
-          <h2>{place}</h2>
+          <h2>{setTravels.place}</h2>
         </div>
         <div className="travel-card-header-date">
-          <p>{initialDate}</p>
-          <p>{finalDate}</p>
+          <p>{setTravels.initialDate}</p>
+          <p>{setTravels.finalDate}</p>
         </div>
       </div>
       <div className="travel-card-body">
        
         <div className="travel-card-body-text">
-          <p>{route}</p>
-          <span>{budget}</span>
-          <p>{type}</p>
+          <p>{setTravels.route}</p>
+          <span>{setTravels.budget}</span>
+          <p>{setTravels.type}</p>
         </div>
       </div>
     </div>
