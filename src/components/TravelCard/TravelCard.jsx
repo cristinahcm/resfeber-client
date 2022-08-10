@@ -12,14 +12,13 @@ const TravelCard = ({
   initialDate,
   finalDate,
   typeTravel,
-  images,
   deleteTravel,
-  id
+  images,
+  _id
 }) => {
 
-
   return (
-    <div className="travel-card" key={id}>
+    <div className="travel-card" key={_id}>
       <div className="travel-card-header">
         <div className="travel-card-header-title">
           <h1>{destination}</h1>

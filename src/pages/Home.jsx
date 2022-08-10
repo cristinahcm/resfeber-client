@@ -11,7 +11,7 @@ const API_URL = 'http://localhost:5005';
 const Home = () => {
 
 	const [travels, setTravels] = useState([]);
-	const { id } = useParams()
+ const {_id} = useParams();
 	const navigate = useNavigate();
 
 
@@ -24,17 +24,18 @@ useEffect(() => {
   getAllTravels()
 }, [])
 
+const handleDelete = async () => {
+	const { data } = await axios.delete(`${API_URL}/api/travels/delete/${_id}`)
+	setTravels(data.message)
+	setTimeout(() => navigate("/"), 1000)
+}
 
-  const handleDelete = async () => {
-		const { data } = await axios.delete(`${API_URL}/api/travels/delete/${id}`)
-		setTravels(data.message)
-		setTimeout(() => navigate("/"), 1000)
-	}
 
 	return (
 		<div>
 	{travels.map((travel) => {
 					console.log(travel)
+					console.log(travel._id)
 					return (
 						<TravelCard
 						destination={travel.destination}
@@ -46,8 +47,8 @@ useEffect(() => {
 						typeTravel={travel.typeTravel}
 						images={travel.images}
 						//type={travel.type}
-						deleteTravel={handleDelete}
-						id = {travel._id}
+						deleteTravel = {handleDelete}
+						_id = {travel._id}
 						/>
 					)
 				})}
