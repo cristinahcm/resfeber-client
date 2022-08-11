@@ -11,22 +11,23 @@ const API_URL = 'http://localhost:5005';
 const Home = () => {
 
 	const [travels, setTravels] = useState([]);
- const {_id} = useParams();
+ //const {id} = useParams();
 	const navigate = useNavigate();
 
 
 const getAllTravels = async () => {
 	const response = await axios.get(`${API_URL}/api/travels`)
-  console.log(response.data)
+  console.log(`get travels`, response.data)
   setTravels(response.data)
 }
 useEffect(() => {
   getAllTravels()
 }, [])
 
-const handleDelete = async () => {
-	const { data } = await axios.delete(`${API_URL}/api/travels/delete/${_id}`)
-	setTravels(data.message)
+const handleDelete = async (id) => {
+	const { data } = await axios.delete(`${API_URL}/api/travels/delete/${id}`)
+	const newTravels = travels.filter(travel => travel.id !== id)
+	setTravels(newTravels)
 	setTimeout(() => navigate("/"), 1000)
 }
 
@@ -47,7 +48,7 @@ const handleDelete = async () => {
 						typeTravel={travel.typeTravel}
 						images={travel.images}
 						//type={travel.type}
-						deleteTravel = {handleDelete}
+						deleteTravel = {() => handleDelete(travel._id)}
 						_id = {travel._id}
 						/>
 					)

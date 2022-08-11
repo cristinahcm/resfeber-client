@@ -30,6 +30,7 @@ export default function EditTravelPage() {
       }
     };
 
+    
     return (
       <div className="container">
         <form onSubmit={handleEdit}>
