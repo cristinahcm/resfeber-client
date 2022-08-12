@@ -9,11 +9,8 @@ import { useNavigate } from "react-router-dom"
 const API_URL = 'http://localhost:5005';
 
 const Home = () => {
-
 	const [travels, setTravels] = useState([]);
- //const {id} = useParams();
 	const navigate = useNavigate();
-
 
 const getAllTravels = async () => {
 	const response = await axios.get(`${API_URL}/api/travels`)
@@ -23,6 +20,7 @@ const getAllTravels = async () => {
 useEffect(() => {
   getAllTravels()
 }, [])
+
 
 const handleDelete = async (id) => {
 	const { data } = await axios.delete(`${API_URL}/api/travels/delete/${id}`)

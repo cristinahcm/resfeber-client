@@ -8,7 +8,7 @@ import Oops from "./pages/Oops"
 import PrivateRoute from "./components/ProtectedRoute/PrivateRoute"
 import CreateTravelPage from "./pages/CreateTravelPage"
 import UserInfoPage from "./pages/UserInfoPage"
-import EditTravelPage from "./pages/EditTravelPage"
+
 
 
 function App() {
@@ -18,7 +18,6 @@ function App() {
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/createTravel" element={<CreateTravelPage />} />
-				<Route path="/editTravel/:id" element={<EditTravelPage />} />
 				<Route path="/signin" element={<Signin />} />
 				<Route path="/signup" element={<Signup />} />
 				<Route path="/UserInfoPage" element={<UserInfoPage />} />
@@ -30,5 +29,7 @@ function App() {
 		</div>
 	)
 }
+
+
 
 export default App
