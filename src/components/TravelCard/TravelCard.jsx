@@ -41,6 +41,7 @@ const TravelCard = ({
           <img src={images} alt="img" />
         </div>
         </div>
+        <button >Accept</button>
         <button onClick={deleteTravel}>Delete me !</button>
       </div>
 
