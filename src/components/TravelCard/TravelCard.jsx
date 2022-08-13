@@ -16,7 +16,7 @@ const TravelCard = ({
   images,
   _id
 }) => {
-
+console.log('Where am i?')
   return (
     <div className="travel-card" key={_id}>
       <div className="travel-card-header">

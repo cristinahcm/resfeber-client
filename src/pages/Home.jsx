@@ -14,47 +14,47 @@ const Home = () => {
 	const navigate = useNavigate();
 	const [editMode, setEditMode] = useState(false)
 	const [editTravel, setEditTravel] = useState({})
-  const { id } = useParams();
+    //const { id } = useParams();
+	
+	
+	const getAllTravels = async () => {
+		const response = await axios.get(`${API_URL}/api/travels`)
+		console.log(`get travels`, response.data)
+		setTravels(response.data)
+	}
+	useEffect(() => {
+		getAllTravels()
+	}, [])
 
-
-const getAllTravels = async () => {
-	const response = await axios.get(`${API_URL}/api/travels`)
-  console.log(`get travels`, response.data)
-  setTravels(response.data)
-}
-useEffect(() => {
-  getAllTravels()
-}, [])
-
-const handleEditTodo = async (e) => {
-	e.preventDefault()
-	console.log(editTravel)
-	const { data } = await axios.put(`${API_URL}/api/travels/edit/${id}`, editTravel)
-	console.log(data)
-	setEditTravel(data)
-	setEditMode(false)
-}
-
-const onChange = (e) => {
-	setEditTravel({
-		...editTravel,
-		[e.target.name]: e.target.value
-	})
-
-
-const handleDelete = async (id) => {
-	const { data } = await axios.delete(`${API_URL}/api/travels/delete/${id}`)
-	const newTravels = travels.filter(travel => travel.id !== id)
-	setTravels(newTravels)
-	setTimeout(() => navigate("/"), 1000)
-}
-
-
-	return (
-		<div>
+	const handleEditTravel = async (id , e) => {
+		e.preventDefault()
+		console.log(editTravel)
+		const { data } = await axios.put(`${API_URL}/api/travels/edit/${id}`, editTravel)
+		console.log(data)
+		setEditTravel(data)
+		setEditMode(false)
+	}
+	
+	const onChange = (e) => {
+		setEditTravel({
+			...editTravel,
+			[e.target.name]: e.target.value
+		})
+	}
+		
+		const handleDelete = async (id) => {
+			const { data } = await axios.delete(`${API_URL}/api/travels/delete/${id}`)
+			const newTravels = travels.filter(travel => travel.id !== id)
+			setTravels(newTravels)
+			setTimeout(() => navigate("/"), 1000)
+		}
+		
+		console.log('render')
+		return (
+			<div>
 	{travels.map((travel) => {
-					console.log(travel)
-					console.log(travel._id)
+		console.log(travel)
+		console.log(travel._id)
 					return (
 						<>
 						<TravelCard
@@ -76,16 +76,26 @@ const handleDelete = async (id) => {
 				})}
 
 {editMode && (
+	<>
 	<TravelEditForm
 		travel={editTravel}
 		onChange={onChange}
-		onSubmit={handleEditTodo}
+		onSubmit={() => handleEditTravel(editTravel._id)}
+		destination = {editTravel.destination}
+		route = {editTravel.route}
+		origin = {editTravel.origin}
+		budget = {editTravel.budget}
+		initialDate = {editTravel.initialDate}
+		finalDate = {editTravel.finalDate}
+		typeTravel = {editTravel.typeTravel}
+		images = {editTravel.images}
 	/>
+	</>
 
 	)}
 		</div>
 
-	)};
+	);
 }
 
 export default Home;

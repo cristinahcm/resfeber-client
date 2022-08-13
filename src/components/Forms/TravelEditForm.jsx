@@ -6,7 +6,7 @@
 
 // const API_URL = 'http://localhost:5005';
 
-const TravelEditForm  = ({handleEdit, handleChange}) => {
+const TravelEditForm  = ({handleEdit, handleChange, destination, route, budget, initialDate, finalDate, images}) => {
   return (
     <div className="container">
       <form onSubmit={handleEdit}>
@@ -17,6 +17,7 @@ const TravelEditForm  = ({handleEdit, handleChange}) => {
             className="form-control"
             id="destination"
             name="destination"
+            value={destination}
             placeholder="Enter destination"
            onChange={handleChange}
          />
@@ -28,6 +29,7 @@ const TravelEditForm  = ({handleEdit, handleChange}) => {
             className="form-control"
             id="route"
             name="route"
+            value = {route}
             placeholder="Description of your route"
             onChange={handleChange}
           />
@@ -39,6 +41,7 @@ const TravelEditForm  = ({handleEdit, handleChange}) => {
             className="form-control"
             id="origin"
             name="origin"
+            value = {origin}
             placeholder="Origin"
             onChange={handleChange}
           />
@@ -50,6 +53,7 @@ const TravelEditForm  = ({handleEdit, handleChange}) => {
             className="form-control"
             id="budget"
             name="budget"
+            value = {budget}
             placeholder="Enter budget"
             onChange={handleChange}
           />
@@ -61,6 +65,7 @@ const TravelEditForm  = ({handleEdit, handleChange}) => {
             className="form-control"
             id="initialDate"
             name="initialDate"
+            value = {initialDate}
             placeholder="Enter initial date"
             onChange={handleChange}
           />
@@ -72,6 +77,7 @@ const TravelEditForm  = ({handleEdit, handleChange}) => {
             className="form-control"  
             id="finalDate"  
             name="finalDate"
+            value = {finalDate}
             placeholder="Enter final date"
             onChange={handleChange} 
           />  
@@ -93,6 +99,7 @@ const TravelEditForm  = ({handleEdit, handleChange}) => {
             className="form-control"
             id="images"
             name="images"
+            value = {images}
             placeholder="Enter images"
             onChange={handleChange}
           />
