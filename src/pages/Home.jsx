@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 import TravelEditForm from "../components/Forms/TravelEditForm";
+import "./Home.css";
 
 
 const API_URL = 'http://localhost:5005';
@@ -54,13 +55,13 @@ const Home = () => {
 		
 		console.log('render')
 		return (
-			<div>
+			<div className="cards">
 	{travels.map((travel) => {
 		console.log(travel)
 		console.log(travel._id)
 					return (
 						<>
-						<TravelCard
+						<TravelCard 
 						destination={travel.destination}
 						route={travel.route}
 						origin={travel.origin}
@@ -70,10 +71,11 @@ const Home = () => {
 						typeTravel={travel.typeTravel}
 						images={travel.images}
 						//type={travel.type}
-						deleteTravel = {() => handleDelete(travel._id)}
 						_id = {travel._id}
 						/>
-						<button onClick={() => setEditMode(!editMode)}>Edit travel</button>
+						<button onClick={() => setEditMode(!editMode)}>Edit</button>
+						<button onClick={() => handleDelete(travel._id)}>Delete</button>
+
 						</>
 					)
 				})}

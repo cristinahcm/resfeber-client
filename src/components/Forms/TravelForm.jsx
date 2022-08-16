@@ -19,10 +19,11 @@ const TravelForm = () => {
     budget: "",
     initialDate: "",
     finalDate: "",
-    type: ["Eco, Family, Solo, Friends, Only Women"],
+    typeTravel: "",
     images: [],
   });
-  const [type, setType] = React.useState('');
+  const [typeTravel, setTypeTravel] = React.useState('');
+
 
   const navigate = useNavigate();
   const handleChange = (e) => {
@@ -30,10 +31,13 @@ const TravelForm = () => {
       ...travel,
       [e.target.name]: e.target.value,
     });
+    setTypeTravel(e.target.value);
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
     try{
+      console.log(travel);
+
       const response = await axios.post(`${API_URL}/api/travels/upload`, travel)
         //headers: {
          //Authorization: `Bearer ${token}`,
@@ -108,16 +112,22 @@ const TravelForm = () => {
             onChange={handleChange} 
           />  
         </div>
-        <div className="form-group">  
-          <label htmlFor="typeTravel">Type</label>
-          <select name="typeTravel" className="form-select" id="typeTravel">
-            <option value="Eco">Eco</option>
-            <option value="Family">Family</option>
-            <option value="Friends">Friends</option>
-            <option value="Only Women">Only Women</option>
-            <option value="Solo">Solo</option>
-          </select>
-        </div>
+        <InputLabel id="demo-simple-select-label">Type</InputLabel>
+        <Select
+          name="typeTravel"
+          labelId="demo-simple-select-label"
+          id="typeTravel"
+          value={typeTravel}
+          label="Type"
+          onChange={handleChange}
+        >
+          <MenuItem value="Eco">Eco</MenuItem>
+          <MenuItem value="Family">Family</MenuItem>
+          <MenuItem value="Friends">Friends</MenuItem>
+          <MenuItem value="Solo">Solo</MenuItem>
+          <MenuItem value="Only Women">Only Women</MenuItem>
+        </Select>
+        
         <TextField
         id="images"
         label="Images"

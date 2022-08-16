@@ -11,7 +11,7 @@ const { id } = useParams();
 
 
 const getCurrentUser = async () => {
-const response = await axios.get(`${API_URL}/api/users/${id}`)
+const response = await axios.get(`${API_URL}/api/users`)
 console.log(`get users`, response.data)
 setUser(response.data)
 }
