@@ -43,10 +43,13 @@ const Home = () => {
 	}
 		
 		const handleDelete = async (id) => {
+			let result = window.confirm("Are you sure you want to delete this travel?")
+			if (result) {
 			const { data } = await axios.delete(`${API_URL}/api/travels/delete/${id}`)
 			const newTravels = travels.filter(travel => travel.id !== id)
 			setTravels(newTravels)
 			setTimeout(() => navigate("/"), 1000)
+			}
 		}
 		
 		console.log('render')
