@@ -9,6 +9,7 @@ import PrivateRoute from "./components/ProtectedRoute/PrivateRoute"
 import CreateTravelPage from "./pages/CreateTravelPage"
 import UserInfoPage from "./pages/UserInfoPage"
 import UserProfile from "./pages/UserProfile"
+import SearchPage from "./pages/SearchPage"
 
 
 function App() {
@@ -21,10 +22,12 @@ function App() {
 				<Route path="/signin" element={<Signin />} />
 				<Route path="/signup" element={<Signup />} />
 				<Route path="/UserInfoPage" element={<UserInfoPage />} />
-				<PrivateRoute path="/profile/:id" element={<UserProfile />} />
+				<Route path="/profile/:id" element={<UserProfile />} />
 				<Route element={<PrivateRoute />}>
 					<Route path="/profile" element={<Profile />} />
 				</Route>
+				<Route path="/oops" element={<Oops />} />
+				<Route path="/search" element={<SearchPage />} />
 				<Route path="*" element={<Oops />} />
 			</Routes>
 		</div>
