@@ -1,6 +1,14 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+
+
 
 const API_URL = 'http://localhost:5005';
 
@@ -11,9 +19,11 @@ const TravelForm = () => {
     budget: "",
     initialDate: "",
     finalDate: "",
-    type: "",
+    type: ["Eco, Family, Solo, Friends, Only Women"],
     images: [],
   });
+  const [type, setType] = React.useState('');
+
   const navigate = useNavigate();
   const handleChange = (e) => {
     setTravel({
@@ -35,52 +45,47 @@ const TravelForm = () => {
    
   }
   return (
-    <div className="container">
+    <Box
+      sx={{
+        '& .MuiTextField-root': { m: 1, width: '25ch' },
+      }}
+      noValidate
+      autoComplete="off"
+    >
+      <div className="container">
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="destination">Destination</label>
-          <input
-            type="text"
-            className="form-control"
-            id="destination"
-            name="destination"
-            placeholder="Enter destination"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="route">Route</label>
-          <input
-            type="text"
-            className="form-control"
-            id="route"
-            name="route"
-            placeholder="Description of your route"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="origin">Origin</label>
-          <input
-            type="text"
-            className="form-control"
-            id="origin"
-            name="origin"
-            placeholder="Origin"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="budget">Budget</label>
-          <input
-            type="number"
-            className="form-control"
-            id="budget"
-            name="budget"
-            placeholder="Enter budget"
-            onChange={handleChange}
-          />
-        </div>
+        <TextField
+          required
+          id="destination"
+          label="Destination"
+          name="destination"
+          placeholder="Enter destination"
+          onChange={handleChange}
+        />
+        <TextField
+          required
+          id="route"
+          label="Route"
+          name="route"
+          placeholder="Describe the route"
+          onChange={handleChange}
+        />
+        <TextField
+          required
+          id="origin"
+          label="Origin"
+          name="origin"
+          placeholder="Origin"
+          onChange={handleChange}
+        />
+        <TextField
+        required
+        id="budget"
+        label="Budget"
+        name="budget"
+        placeholder="Budget"
+        onChange={handleChange}
+      />
         <div className="form-group">
           <label htmlFor="initialDate">Initial Date</label>
           <input
@@ -113,22 +118,20 @@ const TravelForm = () => {
             <option value="Solo">Solo</option>
           </select>
         </div>
-        <div className="form-group">
-          <label htmlFor="images">Images</label>
-          <input
-            type="text"
-            className="form-control"
-            id="images"
-            name="images"
-            placeholder="Enter images"
-            onChange={handleChange}
-          />
-        </div>
+        <TextField
+        id="images"
+        label="Images"
+        name="images"
+        placeholder="Images"
+        onChange={handleChange}
+      />
+      <br />
         <button type="submit" className="btn btn-primary">
           Submit
         </button>
       </form>
     </div>
+    </Box>
   );
 
 }

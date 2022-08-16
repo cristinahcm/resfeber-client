@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route, Link } from "react-router-dom"
 import BottomAppBar from "./components/Navbar/Navbar"
 import Home from "./pages/Home"
 import Signin from "./pages/Signin"
@@ -10,12 +10,15 @@ import CreateTravelPage from "./pages/CreateTravelPage"
 import UserInfoPage from "./pages/UserInfoPage"
 import UserProfile from "./pages/UserProfile"
 import SearchPage from "./pages/SearchPage"
+import ResponsiveAppBar from "./components/Logo/Logo"
 
 
 function App() {
 	return (
 		<div className="App">
+			
 			<BottomAppBar />
+			<ResponsiveAppBar />
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/createTravel" element={<CreateTravelPage />} />
