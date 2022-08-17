@@ -2,6 +2,10 @@ import { useState } from "react"
 import { useNavigate, Link } from "react-router-dom"
 import axios from "axios"
 import service from "../../services/apiHandler"
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+
 
 const FormSignUp = () => {
 	const [user, setUser] = useState({ name: "", email: "", password: "" })
@@ -19,43 +23,55 @@ const FormSignUp = () => {
 		}
 	}
 	return (
-		<>
+		<Box className="formsignup"
+			sx={{
+				'& .MuiTextField-root': { m: 1, width: '25ch' },
+			}}
+			noValidate
+			autoComplete="off"
+		>
 			{error && <h3 className="error">{error.message}</h3>}
 			<form onSubmit={handleSubmit}>
-				<h2>Signup</h2>
-				<label htmlFor="name">Name</label>
-				<input
+				<h2 className="signh2">Welcome to Resfeber!</h2>
+				<TextField
+					required
+					id="name"
+					label="Name"
+					name="name"
 					onChange={(e) =>
 						setUser({ ...user, [e.target.name]: e.target.value })
 					}
 					value={user.name}
-					type="text"
-					id="name"
-					name="name"
 				/>
-				<label htmlFor="email">Email</label>
-				<input
+				<TextField
+					required
+					id="email"
+					label="Email"
+					name="email"
 					onChange={(e) =>
 						setUser({ ...user, [e.target.name]: e.target.value })
 					}
 					value={user.email}
-					type="email"
-					id="email"
-					name="email"
 				/>
-				<label htmlFor="password">Password</label>
-				<input
+				<TextField
+					required
+					id="password"
+					label="Password"
+					name="password"
+					type="password"
 					onChange={(e) =>
 						setUser({ ...user, [e.target.name]: e.target.value })
 					}
 					value={user.password}
-					type="password"
-					id="password"
-					name="password"
 				/>
-				<button>Submit</button>
+				<br></br>
+				<Button type="submit" variant="outlined" className="buttonsign" >
+					Continue
+				</Button>
 			</form>
-		</>
+
+			<Link to="/signin" className="backsign">Sign in</Link>
+		</Box>
 	)
 }
 
