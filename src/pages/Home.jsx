@@ -59,9 +59,11 @@ const Home = () => {
 	{travels.map((travel) => {
 		console.log(travel)
 		console.log(travel._id)
+	
 					return (
 						<>
 						<TravelCard 
+					//	owner = {travel.owner.name}
 						destination={travel.destination}
 						route={travel.route}
 						origin={travel.origin}

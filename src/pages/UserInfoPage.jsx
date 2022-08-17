@@ -3,6 +3,8 @@ import { useNavigate, Link } from "react-router-dom"
 import axios from "axios"
 import service from "../services/apiHandler"
 
+const API_URL = "http://localhost:5005"
+
 const UserInfoPage = () => {
 	const [user, setUser] = useState({ picture: "", interests: "", gender: "", age: ""})
 	const [error, setError] = useState(null)
@@ -11,7 +13,7 @@ const UserInfoPage = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 		try {
-			const res = await service.signup(user)
+			const res = await  axios.put(`${API_URL}/api/users/edit`)
 			console.log(res)
 			navigate("/")
 		} catch (error) {

@@ -32,6 +32,7 @@ const ExpandMore = styled((props) => {
 
 
 const TravelCard = ({
+  owner,
   destination,
   route,
   origin,
@@ -39,7 +40,6 @@ const TravelCard = ({
   initialDate,
   finalDate,
   typeTravel,
-  deleteTravel,
   images,
   _id
 }) => {
@@ -62,7 +62,7 @@ const TravelCard = ({
             <MoreVertIcon />
           </IconButton>
         }
-        title={destination}
+        title=  {destination}   //{`${destination} ${owner}`}
         subheader={`Initial Date: ${initialDate} - Final Date:${finalDate}`}
       />
       <CardMedia
