@@ -3,7 +3,7 @@ import TravelForm from '../components/Forms/TravelForm';
 const CreateTravelPage = () => {
     return (
         <div>
-        <h1>Create Travel</h1>
+        <h1 className='h1form'>New Travel</h1>
         <TravelForm />
         </div>
     );
