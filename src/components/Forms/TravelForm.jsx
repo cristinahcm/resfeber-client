@@ -96,16 +96,17 @@ const TravelForm = () => {
             placeholder="Budget"
             onChange={handleChange}
           /><br></br>
-          <InputLabel id="demo-simple-select-label">Type</InputLabel>
-          <Select
+          Type of travel
+          <br></br>
+          <Select sx={{ m: 1, width: '28ch' }}
             required
             name="typeTravel"
-            labelId="demo-simple-select-label"
             id="typeTravel"
             value={typeTravel}
             label="Type"
+            placeholder="Type of travel"
             onChange={handleChange}
-          >
+>
             <MenuItem value="Eco">Eco</MenuItem>
             <MenuItem value="Family">Family</MenuItem>
             <MenuItem value="Friends">Friends</MenuItem>
