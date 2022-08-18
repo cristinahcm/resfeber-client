@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useNavigate, Link } from "react-router-dom"
 import service from "../services/apiHandler"
 import axios from "../context/axiosInstance.js";
+// import Select from '@mui/material/Select';
 
 const UserInfoPage = () => {
 	const [user, setUser] = useState({ picture: "", interests: "", gender: "", age: ""})

@@ -11,8 +11,6 @@ import Button from '@mui/material/Button';
 
 
 
-
-
 const TravelForm = () => {
   const [travel, setTravel] = useState({
     destination: "",

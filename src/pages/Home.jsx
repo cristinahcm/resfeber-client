@@ -11,13 +11,14 @@ import { Box } from "@mui/material";
 import Button from "@mui/material/Button";
 
 
-
-
 const Home = () => {
 	const [travels, setTravels] = useState([]);
 	const navigate = useNavigate();
 	const [editMode, setEditMode] = useState(false);
 	const [editTravel, setEditTravel] = useState({});
+	const [isLiked, setIsLiked] = useState(false);
+	const [isDisliked, setIsDisliked] = useState(false);
+
   //const { id } = useParams();
 	
 	const getAllTravels = async () => {
@@ -28,6 +29,24 @@ const Home = () => {
 	useEffect(() => {
 		getAllTravels()
 	}, [])
+
+const handleLike =  (travelId) => {
+	setIsLiked(travels.map(travel => travel._id === travelId ? {...travel, isLiked: true} : travel))
+	const newTravels = travels.filter(travel => travel._id !== travelId)
+	setTravels(newTravels)
+	console.log(isLiked)
+	console.log(travelId)
+} 
+
+const handleDislike =  (travelId) => {
+	// setIsDisliked(travels.map(travel => travel._id === travelId ? {...travel, isDisliked: true} : travel))
+	const newTravels = travels.filter(travel => travel._id !== travelId)
+	setTravels(newTravels)
+	console.log(isDisliked)
+	console.log(travelId)
+}
+
+
 
 
 	const handleEditTravel = async (id , e) => {
@@ -48,7 +67,7 @@ const Home = () => {
 			let result = window.confirm("Are you sure you want to delete this travel?")
 			if (result) {
 			const { data } = await axios.delete(`/api/travels/delete/${id}`)
-			const newTravels = travels.filter(travel => travel.id !== id)
+			const newTravels = travels.filter(travel => travel._id !== id)
 			setTravels(newTravels)
 			setTimeout(() => navigate("/"), 1000)
 			}
@@ -60,7 +79,8 @@ const Home = () => {
 	
 					return (
 						<>
-						<TravelCard
+					{/* <TinderCard className="swipe" key={travel.id} preventSwipe={['up', 'down']}>  */}
+						<TravelCard className="usercard"
 						destination={travel.destination}
 						route={travel.route}
 						origin={travel.origin}
@@ -70,14 +90,39 @@ const Home = () => {
 						typeTravel={travel.typeTravel}
 						images={travel.images}
 						_id = {travel._id}
+						handleLike = {() => handleLike(travel._id)}
+						handleDislike = {() => handleDislike(travel._id)}
 						/>
 						<Box className="buttonstravel">
 						<Button onClick={() => setEditMode(!editMode)}>Edit</Button>
 						<Button onClick={() => handleDelete(travel._id)}>Delete</Button>
 						</Box>
+					
 						</>
 					)
 				})}
+
+
+				{isLiked && 
+				(<>
+					<h1>You liked this travel</h1>
+					<TravelCard className="usercard"
+						destination={isLiked.destination}
+						route={isLiked.route}
+						origin={isLiked.origin}
+						budget={isLiked.budget}
+						initialDate={isLiked.initialDate}
+						finalDate={isLiked.finalDate}
+						typeTravel={isLiked.typeTravel}
+						images={isLiked.images}
+						_id = {isLiked._id}
+						/>
+
+				</>)
+				
+				
+				
+				}
 
 {editMode && (
 	<TravelEditForm
