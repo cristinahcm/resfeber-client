@@ -33,7 +33,8 @@ const FormSignUp = () => {
 			{error && <h3 className="error">{error.message}</h3>}
 			<form onSubmit={handleSubmit}>
 				<h2 className="signh2">Welcome to Resfeber!</h2>
-				<TextField
+				<Box className="blacks">
+					<TextField
 					required
 					id="name"
 					label="Name"
@@ -43,6 +44,8 @@ const FormSignUp = () => {
 					}
 					value={user.name}
 				/>
+				</Box>
+				<Box className="blacks">
 				<TextField
 					required
 					id="email"
@@ -53,6 +56,7 @@ const FormSignUp = () => {
 					}
 					value={user.email}
 				/>
+				</Box>
 				<TextField
 					required
 					id="password"

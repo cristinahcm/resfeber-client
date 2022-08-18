@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom"
 import TravelEditForm from "../components/Forms/TravelEditForm";
 import "./Home.css";
 import TinderCard from 'react-tinder-card'
+import { Box } from "@mui/material";
+import Button from "@mui/material/Button";
 
 
 
@@ -59,7 +61,7 @@ const Home = () => {
 					return (
 						<>
 						<TinderCard className="swipe" key={travel.id} preventSwipe={['up', 'down']}> 
-						<TravelCard className="usercard"
+						<TravelCard
 						destination={travel.destination}
 						route={travel.route}
 						origin={travel.origin}
@@ -70,9 +72,11 @@ const Home = () => {
 						images={travel.images}
 						_id = {travel._id}
 						/>
-						<button onClick={() => setEditMode(!editMode)}>Edit</button>
-						<button onClick={() => handleDelete(travel._id)}>Delete</button>
 						</TinderCard>
+						<Box className="buttonstravel">
+						<Button onClick={() => setEditMode(!editMode)}>Edit</Button>
+						<Button onClick={() => handleDelete(travel._id)}>Delete</Button>
+						</Box>
 						</>
 					)
 				})}
