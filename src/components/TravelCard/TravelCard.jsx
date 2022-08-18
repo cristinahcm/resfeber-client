@@ -72,14 +72,14 @@ const TravelCard = ({
         alt="Destination image"
       />
       <CardContent>
-        <Typography variant="body2" color="text.secondary" fontSize="16px" fontWeight="500">
+        <Typography variant="body2" color="text.secondary" fontSize="14px" fontWeight="500">
           {`Origin: ${origin}`}
         </Typography>
-        <Typography variant="body3" color="text.secondary" fontSize="16px" fontWeight="500">
+        <Typography variant="body3" color="text.secondary" fontSize="14px" fontWeight="500">
           {`Budget: ${budget}`}
         </Typography>
         <br></br>
-        <Typography variant="body4" color="text.secondary" fontSize="16px" fontWeight="500">
+        <Typography variant="body4" color="text.secondary" fontSize="14px" fontWeight="500">
           {`Type of travel: ${typeTravel}`}
         </Typography>
         
@@ -89,9 +89,6 @@ const TravelCard = ({
         <IconButton aria-label="reject">
         <CloseOutlinedIcon />
         </IconButton>
-        <IconButton aria-label="add to favorites">
-        <FavoriteBorderOutlinedIcon />
-        </IconButton>
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
@@ -100,6 +97,10 @@ const TravelCard = ({
         >
           <ExpandMoreIcon />
         </ExpandMore>
+        <IconButton aria-label="add to favorites">
+        <FavoriteBorderOutlinedIcon />
+        </IconButton>
+       
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>

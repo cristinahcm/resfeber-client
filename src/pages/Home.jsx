@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 import TravelEditForm from "../components/Forms/TravelEditForm";
 import "./Home.css";
+import TinderCard from 'react-tinder-card'
 
 
 const API_URL = 'http://localhost:5005';
@@ -62,8 +63,7 @@ const Home = () => {
 	
 					return (
 						<>
-						<TravelCard 
-					//	owner = {travel.owner.name}
+						<TravelCard className="usercard"
 						destination={travel.destination}
 						route={travel.route}
 						origin={travel.origin}
@@ -72,7 +72,6 @@ const Home = () => {
 						finalDate={travel.finalDate}
 						typeTravel={travel.typeTravel}
 						images={travel.images}
-						//type={travel.type}
 						_id = {travel._id}
 						/>
 						<button onClick={() => setEditMode(!editMode)}>Edit</button>

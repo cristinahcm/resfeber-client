@@ -3,6 +3,7 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import { Link } from 'react-router-dom';
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -10,7 +11,7 @@ const ResponsiveAppBar = () => {
 
   return (
     <AppBar position="static">
-      
+          <Link to="/">
           <Typography
             variant="h5"
             noWrap
@@ -31,7 +32,7 @@ const ResponsiveAppBar = () => {
             </div>
             
           </Typography>
-        
+        </Link>
       
     </AppBar>
   );
