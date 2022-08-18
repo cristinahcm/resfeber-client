@@ -25,7 +25,7 @@ export default function BottomAppBar() {
             <Link to="/search"><SearchRoundedIcon sx={{color:'#212121', fontSize:'65px', paddingRight:'20px', paddingLeft:'20px'}}/></Link>
             <Link to="/createTravel"><ControlPointRoundedIcon sx={{color:'#212121', fontSize:'65px', paddingRight:'20px', paddingLeft:'20px'}}/></Link>
             <Link to="/favorites"><FavoriteBorderRoundedIcon sx={{color:'#212121', fontSize:'65px', paddingRight:'20px', paddingLeft:'20px'}}/></Link>
-            <Link to="/profile/:id"><PersonOutlineRoundedIcon sx={{color:'#212121', fontSize:'65px', paddingRight:'20px', paddingLeft:'20px'}}/></Link>
+            <Link to="/profile"><PersonOutlineRoundedIcon sx={{color:'#212121', fontSize:'65px', paddingRight:'20px', paddingLeft:'20px'}}/></Link>
           </IconButton>
         </Toolbar>
       </AppBar>

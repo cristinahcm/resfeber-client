@@ -40,6 +40,8 @@ const TravelCard = ({
   initialDate,
   finalDate,
   typeTravel,
+  handleLike,
+  handleDislike,
   images,
   _id
 }) => {
@@ -86,7 +88,7 @@ const TravelCard = ({
       </CardContent>
       <CardActions sx={{display:'flex',justifyContent:'space-around' }}>
         
-        <IconButton aria-label="reject">
+        <IconButton aria-label="reject"  onClick = {handleDislike}>
         <CloseOutlinedIcon />
         </IconButton>
         <ExpandMore
@@ -97,8 +99,8 @@ const TravelCard = ({
         >
           <ExpandMoreIcon />
         </ExpandMore>
-        <IconButton aria-label="add to favorites">
-        <FavoriteBorderOutlinedIcon />
+        <IconButton aria-label="add to favorites" onClick = {handleLike} >
+        <FavoriteBorderOutlinedIcon  />
         </IconButton>
        
       </CardActions>
