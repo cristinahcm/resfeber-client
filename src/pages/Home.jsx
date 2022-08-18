@@ -1,6 +1,6 @@
 import React from "react";
 import TravelCard from "../components/TravelCard/TravelCard";
-import axios from "axios";
+import axios from "../context/axiosInstance.js";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
@@ -9,30 +9,32 @@ import "./Home.css";
 import TinderCard from 'react-tinder-card'
 
 
-const API_URL = 'http://localhost:5005';
+
 
 const Home = () => {
 	const [travels, setTravels] = useState([]);
 	const navigate = useNavigate();
-	const [editMode, setEditMode] = useState(false)
-	const [editTravel, setEditTravel] = useState({})
-    //const { id } = useParams();
-	
+	const [editMode, setEditMode] = useState(false);
+	const [editTravel, setEditTravel] = useState({});
+  //const { id } = useParams();
 	
 	const getAllTravels = async () => {
-		const response = await axios.get(`${API_URL}/api/travels`)
+		const response = await axios.get("/api/travels")
+
 		console.log(`get travels`, response.data)
 		setTravels(response.data)
 	}
+
 	useEffect(() => {
 		getAllTravels()
 	}, [])
 
+
 	const handleEditTravel = async (id , e) => {
 		e.preventDefault()
 		console.log(editTravel)
-		const { data } = await axios.put(`${API_URL}/api/travels/edit/${id}`, editTravel)
-		console.log(data)
+		const { data } = await axios.put(`/api/travels/edit/${id}`, editTravel)
+		console.log("travels :", data)
 		setEditTravel(data)
 		setEditMode(false)
 	}
@@ -47,7 +49,7 @@ const Home = () => {
 		const handleDelete = async (id) => {
 			let result = window.confirm("Are you sure you want to delete this travel?")
 			if (result) {
-			const { data } = await axios.delete(`${API_URL}/api/travels/delete/${id}`)
+			const { data } = await axios.delete(`/api/travels/delete/${id}`)
 			const newTravels = travels.filter(travel => travel.id !== id)
 			setTravels(newTravels)
 			setTimeout(() => navigate("/"), 1000)
@@ -82,6 +84,7 @@ const Home = () => {
 				})}
 
 {editMode && (
+	console.log(editTravel),
 	<>
 	<TravelEditForm
 		travel={editTravel}

@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import axios from "axios"
+import axios from "../../context/axiosInstance.js";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import InputLabel from '@mui/material/InputLabel';
@@ -11,7 +11,7 @@ import Button from '@mui/material/Button';
 
 
 
-const API_URL = 'http://localhost:5005';
+
 
 const TravelForm = () => {
   const [travel, setTravel] = useState({
@@ -41,7 +41,7 @@ const TravelForm = () => {
     try {
       console.log(travel);
 
-      const response = await axios.post(`${API_URL}/api/travels/upload`, travel)
+      const response = await axios.post(`/api/travels/upload`, travel)
       //headers: {
       //Authorization: `Bearer ${token}`,
       //},
