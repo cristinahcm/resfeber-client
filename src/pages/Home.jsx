@@ -58,6 +58,7 @@ const Home = () => {
 	
 					return (
 						<>
+						<TinderCard className="swipe" key={travel.id} preventSwipe={['up', 'down']}> 
 						<TravelCard className="usercard"
 						destination={travel.destination}
 						route={travel.route}
@@ -71,7 +72,7 @@ const Home = () => {
 						/>
 						<button onClick={() => setEditMode(!editMode)}>Edit</button>
 						<button onClick={() => handleDelete(travel._id)}>Delete</button>
-
+						</TinderCard>
 						</>
 					)
 				})}
