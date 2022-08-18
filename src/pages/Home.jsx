@@ -20,8 +20,6 @@ const Home = () => {
 	
 	const getAllTravels = async () => {
 		const response = await axios.get("/api/travels")
-
-		console.log(`get travels`, response.data)
 		setTravels(response.data)
 	}
 
@@ -32,9 +30,7 @@ const Home = () => {
 
 	const handleEditTravel = async (id , e) => {
 		e.preventDefault()
-		console.log(editTravel)
 		const { data } = await axios.put(`/api/travels/edit/${id}`, editTravel)
-		console.log("travels :", data)
 		setEditTravel(data)
 		setEditMode(false)
 	}
@@ -56,12 +52,9 @@ const Home = () => {
 			}
 		}
 		
-		console.log('render')
 		return (
 			<div className="cards">
 	{travels.map((travel) => {
-		console.log(travel)
-		console.log(travel._id)
 	
 					return (
 						<>
@@ -84,8 +77,6 @@ const Home = () => {
 				})}
 
 {editMode && (
-	console.log(editTravel),
-	<>
 	<TravelEditForm
 		travel={editTravel}
 		onChange={onChange}
@@ -99,7 +90,6 @@ const Home = () => {
 		typeTravel = {editTravel.typeTravel}
 		images = {editTravel.images}
 	/>
-	</>
 
 	)}
 		</div>
