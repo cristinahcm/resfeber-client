@@ -74,7 +74,8 @@ ul {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	margin-top: 5rem;
+	margin-top: 6rem;
+	
 }
 
 .swipe {
@@ -89,5 +90,17 @@ ul {
 }
 	
 .buttonstravel {
-	margin-bottom: 3rem;
+	margin-top: 1rem;
+	margin-bottom: 6rem;
+}
+
+.dates {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 0.2rem;
+	color:#686868;
+	font-size: 14px;
+	font-weight: 500;
 }

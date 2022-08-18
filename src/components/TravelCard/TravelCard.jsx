@@ -15,6 +15,7 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import { Box } from "@mui/system";
 
 const API_URL = 'http://localhost:5005';
 
@@ -28,8 +29,6 @@ const ExpandMore = styled((props) => {
     duration: theme.transitions.duration.shortest,
   }),
 }));
-
-
 
 const TravelCard = ({
   owner,
@@ -48,13 +47,20 @@ const TravelCard = ({
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  function generateRandomLetter() {
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  
+    return alphabet[Math.floor(Math.random() * alphabet.length)];
+  }
+
   return (
     <Card sx={{ maxWidth: 345}}>
       
       <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
+          <Avatar sx={{ bgcolor:"#A8BCCB" }} aria-label="recipe">
+            {generateRandomLetter()}
           </Avatar>
         }
         action={
@@ -62,9 +68,14 @@ const TravelCard = ({
             <MoreVertIcon />
           </IconButton>
         }
-        title=  {destination}   //{`${destination} ${owner}`}
-        subheader={`Initial Date: ${initialDate} - Final Date:${finalDate}`}
-      />
+        title=  {destination}
+        />
+        <Box className="dates">
+          Initial Date: {initialDate}
+        </Box>
+        <Box className="dates">
+          Final Date: {finalDate}
+        </Box>
       <CardMedia
         component="img"
         height="194"

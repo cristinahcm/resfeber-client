@@ -21,11 +21,11 @@ export default function BottomAppBar() {
       <AppBar position="fixed" sx={{ top: 'auto', bottom: 0, }}>
         <Toolbar sx={{backgroundColor:'white', display: 'flex', justifyContent:'center'}}>
           <IconButton>
-            <Link to="/"><HomeOutlinedIcon sx={{color:'#212121', fontSize:'65px', paddingRight:'20px', paddingLeft:'20px'}}/></Link>
-            <Link to="/search"><SearchRoundedIcon sx={{color:'#212121', fontSize:'65px', paddingRight:'20px', paddingLeft:'20px'}}/></Link>
-            <Link to="/createTravel"><ControlPointRoundedIcon sx={{color:'#212121', fontSize:'65px', paddingRight:'20px', paddingLeft:'20px'}}/></Link>
-            <Link to="/favorites"><FavoriteBorderRoundedIcon sx={{color:'#212121', fontSize:'65px', paddingRight:'20px', paddingLeft:'20px'}}/></Link>
-            <Link to="/profile/:id"><PersonOutlineRoundedIcon sx={{color:'#212121', fontSize:'65px', paddingRight:'20px', paddingLeft:'20px'}}/></Link>
+            <Link to="/"><HomeOutlinedIcon sx={{color:'#212121', fontSize:'60px', paddingRight:'20px', paddingLeft:'20px'}}/></Link>
+            <Link to="/search"><SearchRoundedIcon sx={{color:'#212121', fontSize:'60px', paddingRight:'20px', paddingLeft:'20px'}}/></Link>
+            <Link to="/createTravel"><ControlPointRoundedIcon sx={{color:'#212121', fontSize:'60px', paddingRight:'20px', paddingLeft:'20px'}}/></Link>
+            <Link to="/favorites"><FavoriteBorderRoundedIcon sx={{color:'#212121', fontSize:'60px', paddingRight:'20px', paddingLeft:'20px'}}/></Link>
+            <Link to="/profile/:id"><PersonOutlineRoundedIcon sx={{color:'#212121', fontSize:'60px', paddingRight:'20px', paddingLeft:'20px'}}/></Link>
           </IconButton>
         </Toolbar>
       </AppBar>

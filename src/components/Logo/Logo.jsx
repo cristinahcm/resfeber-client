@@ -24,7 +24,7 @@ const ResponsiveAppBar = () => {
               justifyContent: 'center',
               backgroundColor: 'white',
               color:'#212121',
-              padding:'20px',
+              padding:'15px',
             }}
           >
             <div className='logo'>
