@@ -1,9 +1,7 @@
 import { useState } from "react"
 import { useNavigate, Link } from "react-router-dom"
-import axios from "axios"
 import service from "../services/apiHandler"
-
-const API_URL = "http://localhost:5005"
+import axios from "../context/axiosInstance.js";
 
 const UserInfoPage = () => {
 	const [user, setUser] = useState({ picture: "", interests: "", gender: "", age: ""})
@@ -13,7 +11,7 @@ const UserInfoPage = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 		try {
-			const res = await  axios.put(`${API_URL}/api/users/edit`)
+			const res = await  axios.put(`/api/users/edit`)
 			console.log(res)
 			navigate("/")
 		} catch (error) {
