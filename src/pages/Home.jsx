@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom"
 import TravelEditForm from "../components/Forms/TravelEditForm";
 import "./Home.css";
 import TinderCard from 'react-tinder-card'
+import { Box } from "@mui/material";
+import Button from "@mui/material/Button";
 
 
 const Home = () => {
