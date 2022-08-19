@@ -22,11 +22,6 @@ const Home = () => {
 	const [isDisliked, setIsDisliked] = useState(false);
 	const auth = useAuth();
 
-	console.log("only auth ", auth);
-
-
-//	const [heartButton, setHeartButton] = useState(false);
-//const { id } = useParams();
 	
 	const getAllTravels = async () => {
 		const response = await axios.get("/api/travels")

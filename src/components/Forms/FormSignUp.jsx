@@ -5,11 +5,14 @@ import service from "../../services/apiHandler"
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 
 
 const FormSignUp = () => {
-	const [user, setUser] = useState({ name: "", email: "", password: "" })
+	const [user, setUser] = useState({ name: "", email: "", password: "" , gender: "", age: ""})
 	const [error, setError] = useState(null)
+	const [continueButton, setContinueButton] = useState(false)
 	const navigate = useNavigate()
 
 	const handleSubmit = async (e) => {
@@ -22,6 +25,13 @@ const FormSignUp = () => {
 			setError(e.message)
 		}
 	}
+
+
+	const handleContinue =  () => {
+	setContinueButton(true)
+	}
+
+
 	return (
 		<Box className="formsignup"
 			sx={{
@@ -69,8 +79,48 @@ const FormSignUp = () => {
 					value={user.password}
 				/>
 				<br></br>
-				<Button type="submit" variant="outlined" className="buttonsign" >
+				<Button onClick={handleContinue} variant="outlined" className="buttonsign" >
 					Continue
+				</Button>
+
+				{continueButton && (
+					<> 
+						<Box className="blacks">
+						<TextField
+							
+							id="age"
+							label="age"
+							name="age"
+							onChange={(e) =>
+								setUser({ ...user, [e.target.name]: e.target.value })
+							}
+							value={user.age}
+						/>
+						</Box>
+						<Select sx={{ m: 1, width: '28ch' }}
+            required
+            name="gender"
+            id="gender"
+            // value={gender}
+            label="Gender"
+            onChange={(e) =>
+							setUser({ ...user, [e.target.name]: e.target.value })
+						}
+>
+            <MenuItem value="Femenin">Eco</MenuItem>
+            <MenuItem value="Masculin">Family</MenuItem>
+						<MenuItem value="Other">Other</MenuItem>
+            
+          </Select>
+						</>
+				)
+				}
+				<br></br>
+
+
+
+				<Button type="submit" variant="outlined" className="buttonsign" >
+					Submit
 				</Button>
 			</form>
 

@@ -3,22 +3,30 @@ import axios from "../../context/axiosInstance.js";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
+import useAuth from "../../context/auth/useAuth";
+
 function generateRandomLetter() {
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
   return alphabet[Math.floor(Math.random() * alphabet.length)];
 }
 
 const UserCard = () => { 
-  const [user, setUser] = useState(null);
-  const getCurrentUser = async () => {
-  const response = await axios.get(`/api/users`)
-  console.log(`get users`, response.data)
-  setUser(response.data)
-  }
+  const auth = useAuth();
+  const [user, setUser] = useState(auth.currentUser);
+  console.log("login user", auth.currentUser);
+  console.log("user", user);
 
-  useEffect(() => {
-    getCurrentUser()
-  } , [])
+
+
+  // const getCurrentUser = async () => {
+  // const response = await axios.get(`/api/users`)
+  // console.log(`get users`, response.data)
+  // setUser(response.data)
+  // }
+
+  // useEffect(() => {
+  //   getCurrentUser()
+  // } , [])
 
   return (
     <div className="user-card">   
