@@ -8,7 +8,6 @@ import Oops from "./pages/Oops"
 import PrivateRoute from "./components/ProtectedRoute/PrivateRoute"
 import CreateTravelPage from "./pages/CreateTravelPage"
 import UserInfoPage from "./pages/UserInfoPage"
-import UserProfile from "./pages/UserProfile"
 import SearchPage from "./pages/SearchPage"
 import ResponsiveAppBar from "./components/Logo/Logo"
 import {useState} from "react"
@@ -27,7 +26,6 @@ function App() {
 				<Route path="/signin" element={<Signin />} />
 				<Route path="/signup" element={<Signup />} />
 				<Route path="/UserInfoPage" element={<UserInfoPage />} />
-				<Route path="/profile/:id" element={<UserProfile />} />
 				<Route element={<PrivateRoute />}>
 					<Route path="/profile" element={<Profile />} />
 				</Route>

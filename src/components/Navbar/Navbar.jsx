@@ -18,7 +18,7 @@ import {Link} from 'react-router-dom';
 export default function BottomAppBar({handleHeartButton}) {
   return (
     <React.Fragment>
-      <AppBar position="fixed" sx={{ top: 'auto', bottom: 0, }}>
+      <AppBar position="fixed" sx={{ top: 'auto', bottom: -20, }}>
         <Toolbar sx={{backgroundColor:'white', display: 'flex', justifyContent:'center'}}>
           <IconButton>
             <Link to="/"><HomeOutlinedIcon sx={{color:'#212121', fontSize:'65px', paddingRight:'20px', paddingLeft:'20px'}}/></Link>
