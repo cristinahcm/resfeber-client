@@ -19,14 +19,11 @@ const UserCard = () => {
   return (
     <div className="user-card">   
 
-      <Avatar sx={{ bgcolor:"#A8BCCB" }} aria-label="recipe">
-            {generateRandomLetter()}
+      <Avatar sx={{ bgcolor:"MediumAquaMarine" }} >
           </Avatar> 
           {user &&  (
             <> 
             <h3 className="profile-name">{user.name}</h3>  
-            <h3 className="profile-email">{user.email}</h3>
-            <p>Age: {user.age}</p>
             </>
           )}
 
