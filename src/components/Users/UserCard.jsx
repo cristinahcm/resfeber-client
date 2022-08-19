@@ -1,27 +1,39 @@
+import { Avatar } from "@mui/material";
+import axios from "../../context/axiosInstance.js";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
+function generateRandomLetter() {
+  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  return alphabet[Math.floor(Math.random() * alphabet.length)];
+}
 
-const UserCard = ({ 
-  name,
-  email,
-  picture,
-  // interests,
-  // gender,
-  age}) => {
+const UserCard = () => { 
+  const [user, setUser] = useState(null);
+  const getCurrentUser = async () => {
+  const response = await axios.get(`/api/users`)
+  console.log(`get users`, response.data)
+  setUser(response.data)
+  }
+
+  useEffect(() => {
+    getCurrentUser()
+  } , [])
 
   return (
-    <div className="user-card">
-      <div className="user-card__avatar">
-        <img src={picture} alt="img"/>
+    <div className="user-card">   
+
+      <Avatar sx={{ bgcolor:"#A8BCCB" }} aria-label="recipe">
+            {generateRandomLetter()}
+          </Avatar> 
+          {user && <h3 className="profile-name">{user.name}</h3>}    
+        <p>Upcoming trips</p>
+        <hr></hr>
+        <p>Favorite trips</p>
+        <hr></hr>
       </div>
-      <div className="user-card__info">
-        <div className="user-card__name"><p>Name: {name} </p></div>
-        <div className="user-card__email"><p>Email: {email} </p></div>
-        <div className="user-card__interests"><p>Interests: </p></div>
-        <div ><p>Gender:</p> </div>
-        <div> <p>Age:</p> <span>{age}</span> </div>
-      </div>
-    </div>
   );
 }
 
-export default UserCard;
+
+export default UserCard; 
