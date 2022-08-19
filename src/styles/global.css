@@ -31,7 +31,7 @@ ul {
 	font-size: 1.5rem;
 	font-weight: 600;
 	color: #212121;
-	margin-bottom: 1rem;
+	margin-bottom: 0.2rem;
 	margin-top: 1rem;
 	text-align: center;
 }
@@ -103,4 +103,38 @@ ul {
 	color:#686868;
 	font-size: 14px;
 	font-weight: 500;
+}
+
+.img {
+	margin-top: 1rem;
+}
+
+.allcardsearch {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 1rem;
+}
+
+.user-card {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-left: 4rem;
+	margin-right: 4rem;
+	margin-top: 1rem;
+	padding: 20px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+	text-align: center;
+}
+
+.profile-name {
+	font-size: 1.3rem;
+	font-weight: 600;
+	color: #212121;
+	margin-bottom: 1rem;
+	margin-top: 0.5rem;
+	text-align: center;
 }
