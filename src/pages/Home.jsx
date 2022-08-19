@@ -68,7 +68,7 @@ const handleDislike =  (travelId) => {
 		setEditTravel(data)
 		setEditMode(false)
 	}
-	
+
 	
 	const onChange = (e) => {
 		setEditTravel({
@@ -115,27 +115,6 @@ const handleDislike =  (travelId) => {
 						</>
 					)
 				})}
-
-
-				{isLiked && 
-				(<>
-					<h1>You liked this travel</h1>
-					<TravelCard className="usercard"
-						destination={isLiked.destination}
-						route={isLiked.route}
-						origin={isLiked.origin}
-						budget={isLiked.budget}
-						initialDate={isLiked.initialDate}
-						finalDate={isLiked.finalDate}
-						typeTravel={isLiked.typeTravel}
-						images={isLiked.images}
-						_id = {isLiked._id}
-						/>
-				</>)
-				
-				
-				
-				}
 
 {editMode && (
 	<TravelEditForm

@@ -10,7 +10,8 @@ import CreateTravelPage from "./pages/CreateTravelPage"
 import UserInfoPage from "./pages/UserInfoPage"
 import SearchPage from "./pages/SearchPage"
 import ResponsiveAppBar from "./components/Logo/Logo"
-import {useState} from "react"
+import Favorites from "./pages/Favorites.jsx"	
+
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
 				<Route path="/signin" element={<Signin />} />
 				<Route path="/signup" element={<Signup />} />
 				<Route path="/UserInfoPage" element={<UserInfoPage />} />
+				<Route path="/favorites" element={<Favorites />} />
 				<Route element={<PrivateRoute />}>
 					<Route path="/profile" element={<Profile />} />
 				</Route>
