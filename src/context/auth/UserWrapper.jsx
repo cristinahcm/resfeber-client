@@ -55,7 +55,7 @@ const UserWrapper = ({ children }) => {
 		storeToken,
 		authenticateUser,
 	}
-
+console.log("auth current user", auth.currentUser)
 	return (
 		<UserContext.Provider value={authValues}>{children}</UserContext.Provider>
 	)

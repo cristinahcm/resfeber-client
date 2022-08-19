@@ -11,16 +11,18 @@ import UserInfoPage from "./pages/UserInfoPage"
 import UserProfile from "./pages/UserProfile"
 import SearchPage from "./pages/SearchPage"
 import ResponsiveAppBar from "./components/Logo/Logo"
-
+import {useState} from "react"
 
 function App() {
+
+
 	return (
 		<div className="App">
 			
-			<BottomAppBar />
+			<BottomAppBar  />
 			<ResponsiveAppBar />
 			<Routes>
-				<Route path="/" element={<Home />} />
+				<Route path="/" element={<Home />  }/>
 				<Route path="/createTravel" element={<CreateTravelPage />} />
 				<Route path="/signin" element={<Signin />} />
 				<Route path="/signup" element={<Signup />} />

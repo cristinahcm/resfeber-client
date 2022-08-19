@@ -16,8 +16,8 @@ const UserCard = ({
       <div className="user-card__info">
         <div className="user-card__name"><p>Name: {name} </p></div>
         <div className="user-card__email"><p>Email: {email} </p></div>
-        {/* <div className="user-card__interests"><p>Interests:{interests} </p></div> */}
-        {/* <div ><p>Gender: {gender}</p> </div> */}
+        <div className="user-card__interests"><p>Interests: </p></div>
+        <div ><p>Gender:</p> </div>
         <div> <p>Age:</p> <span>{age}</span> </div>
       </div>
     </div>

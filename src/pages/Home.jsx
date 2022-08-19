@@ -9,6 +9,8 @@ import "./Home.css";
 import TinderCard from 'react-tinder-card'
 import { Box } from "@mui/material";
 import Button from "@mui/material/Button";
+import authValues from "../context/auth/UserWrapper"
+import useAuth from "../context/auth/useAuth";
 
 
 const Home = () => {
@@ -16,10 +18,15 @@ const Home = () => {
 	const navigate = useNavigate();
 	const [editMode, setEditMode] = useState(false);
 	const [editTravel, setEditTravel] = useState({});
-	const [isLiked, setIsLiked] = useState(false);
+	const [isLiked, setIsLiked] = useState([]);
 	const [isDisliked, setIsDisliked] = useState(false);
+	const auth = useAuth();
 
-  //const { id } = useParams();
+	console.log("only auth ", auth);
+
+
+//	const [heartButton, setHeartButton] = useState(false);
+//const { id } = useParams();
 	
 	const getAllTravels = async () => {
 		const response = await axios.get("/api/travels")
@@ -30,13 +37,18 @@ const Home = () => {
 		getAllTravels()
 	}, [])
 
-const handleLike =  (travelId) => {
-	setIsLiked(travels.map(travel => travel._id === travelId ? {...travel, isLiked: true} : travel))
+	
+const handleLike = async (travelId) => {
+	const response = await axios.put(`/api/users/like/${auth.currentUser._id}`, {isFavorite: travelId})
+//	setIsLiked(travels.map(travel => travel._id === travelId ? {...travel} : travel))
+// {...travel, isLiked: true} : travel
+	console.log(response)
 	const newTravels = travels.filter(travel => travel._id !== travelId)
 	setTravels(newTravels)
 	console.log(isLiked)
 	console.log(travelId)
 } 
+
 
 const handleDislike =  (travelId) => {
 	// setIsDisliked(travels.map(travel => travel._id === travelId ? {...travel, isDisliked: true} : travel))
@@ -46,8 +58,9 @@ const handleDislike =  (travelId) => {
 	console.log(travelId)
 }
 
-
-
+// const handleheartButton = () => {
+// 	setHeartButton(!heartButton)
+// }
 
 	const handleEditTravel = async (id , e) => {
 		e.preventDefault()
@@ -55,6 +68,7 @@ const handleDislike =  (travelId) => {
 		setEditTravel(data)
 		setEditMode(false)
 	}
+	
 	
 	const onChange = (e) => {
 		setEditTravel({
@@ -117,7 +131,6 @@ const handleDislike =  (travelId) => {
 						images={isLiked.images}
 						_id = {isLiked._id}
 						/>
-
 				</>)
 				
 				

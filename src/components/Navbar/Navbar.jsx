@@ -15,7 +15,7 @@ import PersonOutlineRoundedIcon from '@mui/icons-material/PersonOutlineRounded';
 import {Link} from 'react-router-dom';
 
 
-export default function BottomAppBar() {
+export default function BottomAppBar({handleHeartButton}) {
   return (
     <React.Fragment>
       <AppBar position="fixed" sx={{ top: 'auto', bottom: 0, }}>
@@ -24,7 +24,7 @@ export default function BottomAppBar() {
             <Link to="/"><HomeOutlinedIcon sx={{color:'#212121', fontSize:'65px', paddingRight:'20px', paddingLeft:'20px'}}/></Link>
             <Link to="/search"><SearchRoundedIcon sx={{color:'#212121', fontSize:'65px', paddingRight:'20px', paddingLeft:'20px'}}/></Link>
             <Link to="/createTravel"><ControlPointRoundedIcon sx={{color:'#212121', fontSize:'65px', paddingRight:'20px', paddingLeft:'20px'}}/></Link>
-            <Link to="/favorites"><FavoriteBorderRoundedIcon sx={{color:'#212121', fontSize:'65px', paddingRight:'20px', paddingLeft:'20px'}}/></Link>
+            <Link to="/favorites"><FavoriteBorderRoundedIcon sx={{color:'#212121', fontSize:'65px', paddingRight:'20px', paddingLeft:'20px'}} onCLick={handleHeartButton}  /></Link>
             <Link to="/profile"><PersonOutlineRoundedIcon sx={{color:'#212121', fontSize:'65px', paddingRight:'20px', paddingLeft:'20px'}}/></Link>
           </IconButton>
         </Toolbar>
