@@ -4,7 +4,6 @@ import axios from "../context/axiosInstance.js";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
-import TravelEditForm from "../components/Forms/TravelEditForm";
 import "./Home.css";
 import TinderCard from 'react-tinder-card'
 import { Box } from "@mui/material";
@@ -38,7 +37,7 @@ const Home = () => {
 
 	
 const handleLike = async (travelId) => {
-	const response = await axios.put(`/api/users/like/${auth.currentUser._id}`, {isFavorite: travelId})
+	const response = await axios.post(`/api/users/like/${auth.currentUser._id}`, {isFavorite: travelId})
 //	setIsLiked(travels.map(travel => travel._id === travelId ? {...travel} : travel))
 // {...travel, isLiked: true} : travel
 	console.log(response)
@@ -63,6 +62,7 @@ const handleDislike =  (travelId) => {
 
 	const handleEditTravel = async (id , e) => {
 		e.preventDefault()
+		console.log(id)
 		const { data } = await axios.put(`/api/travels/edit/${id}`, editTravel)
 		setEditTravel(data)
 		console.log("Edit", data)

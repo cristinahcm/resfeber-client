@@ -723,7 +723,7 @@ export default function SearchPage() {
     if (!selectedInterest) {
       return userList;
     }
-    return userList.filter((user) => user.interests === selectedInterest);
+    return userList.filter((user) => user.interests.split(" ").includes(selectedInterest));
   }
 
   // Avoid duplicate function calls with useMemo
