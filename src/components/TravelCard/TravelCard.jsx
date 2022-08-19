@@ -14,7 +14,7 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
-import { generateRandomLetter } from "../../utils/utils";
+import { generateRandomLetter } from "../utils/utils";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;

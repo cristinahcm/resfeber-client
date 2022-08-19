@@ -3,7 +3,7 @@ import { Avatar } from "@mui/material";
 import Card from "@mui/material/Card";
 import Box from "@mui/system/Box";
 import { fontSize } from "@mui/system";
-import { generateRandomLetter } from "../../utils/utils";
+import { generateRandomLetter } from "../utils/utils";
 
 
 // React Component to display individual item
