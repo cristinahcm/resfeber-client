@@ -16,25 +16,21 @@ const UserCard = () => {
   console.log("login user", auth.currentUser);
   console.log("user", user);
 
-
-
-  // const getCurrentUser = async () => {
-  // const response = await axios.get(`/api/users`)
-  // console.log(`get users`, response.data)
-  // setUser(response.data)
-  // }
-
-  // useEffect(() => {
-  //   getCurrentUser()
-  // } , [])
-
   return (
     <div className="user-card">   
 
       <Avatar sx={{ bgcolor:"#A8BCCB" }} aria-label="recipe">
             {generateRandomLetter()}
           </Avatar> 
-          {user && <h3 className="profile-name">{user.name}</h3>}    
+          {user &&  (
+            <> 
+            <h3 className="profile-name">{user.name}</h3>  
+            <h3 className="profile-email">{user.email}</h3>
+            <p>Age: {user.age}</p>
+            </>
+          )}
+
+  
         <p>Upcoming trips</p>
         <hr></hr>
         <p>Favorite trips</p>

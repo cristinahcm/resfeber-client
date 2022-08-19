@@ -13,6 +13,7 @@ const FormSignUp = () => {
 	const [user, setUser] = useState({ name: "", email: "", password: "" , gender: "", age: ""})
 	const [error, setError] = useState(null)
 	const [continueButton, setContinueButton] = useState(false)
+	const [signUpBox, setSignUpBox] = useState(true)
 	const navigate = useNavigate()
 
 	const handleSubmit = async (e) => {
@@ -20,7 +21,7 @@ const FormSignUp = () => {
 		try {
 			const res = await service.signup(user)
 			console.log(res)
-			navigate("/userInfoPage")
+			navigate("/")
 		} catch (error) {
 			setError(e.message)
 		}
@@ -29,6 +30,7 @@ const FormSignUp = () => {
 
 	const handleContinue =  () => {
 	setContinueButton(true)
+	setSignUpBox(false)
 	}
 
 
@@ -41,7 +43,10 @@ const FormSignUp = () => {
 			autoComplete="off"
 		>
 			{error && <h3 className="error">{error.message}</h3>}
+	
 			<form onSubmit={handleSubmit}>
+			{signUpBox && (
+				 <>
 				<h2 className="signh2">Welcome to Resfeber!</h2>
 				<Box className="blacks">
 					<TextField
@@ -83,6 +88,11 @@ const FormSignUp = () => {
 					Continue
 				</Button>
 
+</>
+			)
+}
+
+			
 				{continueButton && (
 					<> 
 						<Box className="blacks">
@@ -107,21 +117,20 @@ const FormSignUp = () => {
 							setUser({ ...user, [e.target.name]: e.target.value })
 						}
 >
-            <MenuItem value="Femenin">Eco</MenuItem>
-            <MenuItem value="Masculin">Family</MenuItem>
+            <MenuItem value="Female">Female</MenuItem>
+            <MenuItem value="Male">Male</MenuItem>
 						<MenuItem value="Other">Other</MenuItem>
             
           </Select>
+					<Button type="submit" variant="outlined" className="buttonsign" >
+					Submit
+				</Button >
+
 						</>
 				)
 				}
 				<br></br>
 
-
-
-				<Button type="submit" variant="outlined" className="buttonsign" >
-					Submit
-				</Button>
 			</form>
 
 			<Link to="/signin" className="backsign">Sign in</Link>

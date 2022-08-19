@@ -11,16 +11,20 @@ import { Box } from "@mui/material";
 import Button from "@mui/material/Button";
 import authValues from "../context/auth/UserWrapper"
 import useAuth from "../context/auth/useAuth";
+import EditModal from "../components/Modals/EditModal";	
 
 
 const Home = () => {
 	const [travels, setTravels] = useState([]);
 	const navigate = useNavigate();
-	const [editMode, setEditMode] = useState(false);
 	const [editTravel, setEditTravel] = useState({});
 	const [isLiked, setIsLiked] = useState([]);
 	const [isDisliked, setIsDisliked] = useState(false);
 	const auth = useAuth();
+
+	const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
 	
 	const getAllTravels = async () => {
@@ -61,10 +65,11 @@ const handleDislike =  (travelId) => {
 		e.preventDefault()
 		const { data } = await axios.put(`/api/travels/edit/${id}`, editTravel)
 		setEditTravel(data)
-		setEditMode(false)
+		console.log("Edit", data)
+		console.log("Edit", editTravel)
+
 	}
 
-	
 	const onChange = (e) => {
 		setEditTravel({
 			...editTravel,
@@ -103,7 +108,8 @@ const handleDislike =  (travelId) => {
 						handleDislike = {() => handleDislike(travel._id)}
 						/>
 						<Box className="buttonstravel">
-						<Button onClick={() => setEditMode(!editMode)}>Edit</Button>
+						{/* <Button onClick={() => setEditMode(!editMode)}>Edit</Button> */}
+						<Button onClick={handleOpen}>Edit</Button>
 						<Button onClick={() => handleDelete(travel._id)}>Delete</Button>
 						</Box>
 					
@@ -111,22 +117,8 @@ const handleDislike =  (travelId) => {
 					)
 				})}
 
-{editMode && (
-	<TravelEditForm
-		travel={editTravel}
-		onChange={onChange}
-		onSubmit={() => handleEditTravel(editTravel._id)}
-		destination = {editTravel.destination}
-		route = {editTravel.route}
-		origin = {editTravel.origin}
-		budget = {editTravel.budget}
-		initialDate = {editTravel.initialDate}
-		finalDate = {editTravel.finalDate}
-		typeTravel = {editTravel.typeTravel}
-		images = {editTravel.images}
-	/>
+				<EditModal open={open} handleClose={handleClose} handleChange={onChange} handleSubmit={handleEditTravel} />
 
-	)}
 		</div>
 
 	);
