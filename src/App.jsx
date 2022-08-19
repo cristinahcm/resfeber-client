@@ -22,10 +22,10 @@ function App() {
 			<BottomAppBar  />
 			<ResponsiveAppBar />
 			<Routes>
-				<Route path="/" element={<Home />  }/>
+				<Route path="/home" element={<Home />  }/>
 				<Route path="/createTravel" element={<CreateTravelPage />} />
 				<Route path="/signin" element={<Signin />} />
-				<Route path="/signup" element={<Signup />} />
+				<Route path="/" element={<Signup />} />
 				<Route path="/UserInfoPage" element={<UserInfoPage />} />
 				<Route path="/favorites" element={<Favorites />} />
 				<Route element={<PrivateRoute />}>

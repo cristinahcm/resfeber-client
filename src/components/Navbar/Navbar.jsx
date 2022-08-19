@@ -21,7 +21,7 @@ export default function BottomAppBar({handleHeartButton}) {
       <AppBar position="fixed" sx={{ top: 'auto', bottom: -20, }}>
         <Toolbar sx={{backgroundColor:'white', display: 'flex', justifyContent:'center'}}>
           <IconButton>
-            <Link to="/"><HomeOutlinedIcon sx={{color:'#212121', fontSize:'65px', paddingRight:'20px', paddingLeft:'20px'}}/></Link>
+            <Link to="/home"><HomeOutlinedIcon sx={{color:'#212121', fontSize:'65px', paddingRight:'20px', paddingLeft:'20px'}}/></Link>
             <Link to="/search"><SearchRoundedIcon sx={{color:'#212121', fontSize:'65px', paddingRight:'20px', paddingLeft:'20px'}}/></Link>
             <Link to="/createTravel"><ControlPointRoundedIcon sx={{color:'#212121', fontSize:'65px', paddingRight:'20px', paddingLeft:'20px'}}/></Link>
             <Link to="/favorites"><FavoriteBorderRoundedIcon sx={{color:'#212121', fontSize:'65px', paddingRight:'20px', paddingLeft:'20px'}} onCLick={handleHeartButton}  /></Link>

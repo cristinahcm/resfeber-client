@@ -19,7 +19,7 @@ const TravelForm = () => {
     initialDate: "",
     finalDate: "",
     typeTravel: "",
-    images: [],
+    images: "",
   });
   const [typeTravel, setTypeTravel] = React.useState('');
   const [value, setValue] = React.useState(new Date('2014-08-18T21:11:54'));
@@ -40,10 +40,6 @@ const TravelForm = () => {
       console.log(travel);
 
       const response = await axios.post(`/api/travels/upload`, travel)
-      //headers: {
-      //Authorization: `Bearer ${token}`,
-      //},
-
       console.log(travel);
       navigate("/");
     }

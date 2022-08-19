@@ -23,7 +23,7 @@ const FormSignIn = () => {
 			console.log(res)
 			storeToken(res.authToken)
 			await authenticateUser()
-			navigate("/")
+			navigate("/home")
 		} catch (error) {
 			console.log(error)
 			setError(error)

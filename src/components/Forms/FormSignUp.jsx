@@ -21,7 +21,7 @@ const FormSignUp = () => {
 		try {
 			const res = await service.signup(user)
 			console.log(res)
-			navigate("/")
+			navigate("/home")
 		} catch (error) {
 			setError(e.message)
 		}
@@ -47,7 +47,7 @@ const FormSignUp = () => {
 			<form onSubmit={handleSubmit}>
 			{signUpBox && (
 				 <>
-				<h2 className="signh2">Welcome to Resfeber!</h2>
+			
 				<Box className="blacks">
 					<TextField
 					required

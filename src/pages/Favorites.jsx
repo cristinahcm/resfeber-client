@@ -1,23 +1,20 @@
  import axios from "../context/axiosInstance.js";
  import { useState, useEffect } from "react";
  import TravelCard from "../components/TravelCard/TravelCard.jsx";
-import useAuth from "../context/auth/useAuth.js";
+
 
  const Favorites = () => {
- const [favorites, setFavorites] = useState([])
  const [travels, setTravels] = useState([])
-  const auth = useAuth();
-  const [user, setUser] = useState(auth.currentUser);
-  console.log("login user", auth.currentUser);
-
+  
+ 
   const getAllTravels = async () => {
     try {
       const response = await axios.get("/api/travels");
       const currentUser = await axios.get(`/api/auth/me`);
-      console.log("current user" ,currentUser)
+      
       const filteredTravels = response.data.filter(travel => currentUser.data.isFavorite.includes(travel._id))
       setTravels(filteredTravels)
-      console.log("responde data",response.data,"travels", travels)
+     
     } catch (error) { 
       console.log(error)
     }
