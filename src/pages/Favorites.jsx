@@ -1,17 +1,22 @@
  import axios from "../context/axiosInstance.js";
  import { useState, useEffect } from "react";
  import TravelCard from "../components/TravelCard/TravelCard.jsx";
-
+import useAuth from "../context/auth/useAuth.js";
 
  const Favorites = () => {
  const [favorites, setFavorites] = useState([])
  const [travels, setTravels] = useState([])
-
+  const auth = useAuth();
+  const [user, setUser] = useState(auth.currentUser);
+  console.log("login user", auth.currentUser);
 
   const getAllTravels = async () => {
     try {
-      const response = await axios.get("/api/travels")
-      setTravels(response.data)
+      const response = await axios.get("/api/travels");
+      const currentUser = await axios.get(`/api/auth/me`);
+      console.log("current user" ,currentUser)
+      const filteredTravels = response.data.filter(travel => currentUser.data.isFavorite.includes(travel._id))
+      setTravels(filteredTravels)
       console.log("responde data",response.data,"travels", travels)
     } catch (error) { 
       console.log(error)
@@ -22,32 +27,11 @@
   } , [])
 
 
-  const getUserFavoritesId = async () => {
-    try {
-      const response = await axios.get(`/api/auth/me`)
-      setFavorites(response.data.isFavorite)
-
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  useEffect(() => {
-    getUserFavoritesId()
-  } , [])
-  console.log("favorites",favorites)
-  console.log("all travels",travels)
-
-  const filteredTravels = travels.filter(travel => favorites.includes(travel._id))
-  console.log(filteredTravels)
-
-
-
   return (
     <div>
       <h1>Favorites</h1>
-      <div className="favorites-container">
-        {filteredTravels.map(travel => (
+      <div className="favorites-conStainer">
+        {travels.map(travel => (
         <TravelCard className="usercard"
         destination={travel.destination}
         route={travel.route}

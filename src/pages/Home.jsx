@@ -20,9 +20,14 @@ const Home = () => {
 	const [isLiked, setIsLiked] = useState([]);
 	const [isDisliked, setIsDisliked] = useState(false);
 	const auth = useAuth();
+	const [idTravelToEdit, setIdTravelToEdit] = useState(null);
 
 	const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+
+  const handleOpen = (id) => {
+		setIdTravelToEdit(id);
+		setOpen(true); 
+	}	
   const handleClose = () => setOpen(false);
 
 	
@@ -37,13 +42,11 @@ const Home = () => {
 
 	
 const handleLike = async (travelId) => {
-	const response = await axios.post(`/api/users/like/${auth.currentUser._id}`, {isFavorite: travelId})
-//	setIsLiked(travels.map(travel => travel._id === travelId ? {...travel} : travel))
-// {...travel, isLiked: true} : travel
+	const response = await axios.put(`/api/users/like/${auth.currentUser._id}`, {isFavorite: travelId})
 	console.log(response)
+	console.log("home user ", auth.currentUser)
 	const newTravels = travels.filter(travel => travel._id !== travelId)
 	setTravels(newTravels)
-	console.log(isLiked)
 	console.log(travelId)
 } 
 
@@ -60,14 +63,14 @@ const handleDislike =  (travelId) => {
 // 	setHeartButton(!heartButton)
 // }
 
-	const handleEditTravel = async (id , e) => {
+	const handleEditTravel = async (e) => {
 		e.preventDefault()
-		console.log(id)
-		const { data } = await axios.put(`/api/travels/edit/${id}`, editTravel)
+		console.log(idTravelToEdit)
+		const { data } = await axios.put(`/api/travels/edit/${idTravelToEdit}`, editTravel)
 		setEditTravel(data)
 		console.log("Edit", data)
 		console.log("Edit", editTravel)
-
+		setOpen(false);
 	}
 
 	const onChange = (e) => {
@@ -107,7 +110,7 @@ const handleDislike =  (travelId) => {
 						handleDislike = {() => handleDislike(travel._id)}
 						/>
 						<Box className="buttonstravel">
-						<Button onClick={handleOpen}>Edit</Button>
+						<Button onClick={() => handleOpen(travel._id)}>Edit</Button>
 						<Button onClick={() => handleDelete(travel._id)}>Delete</Button>
 						</Box>
 					
@@ -115,7 +118,7 @@ const handleDislike =  (travelId) => {
 					)
 				})}
 
-				<EditModal open={open} handleClose={handleClose} handleChange={onChange} handleSubmit={handleEditTravel} />
+				<EditModal  open={open} handleClose={handleClose} handleChange={onChange} handleSubmit={handleEditTravel} />
 
 		</div>
 
