@@ -21,38 +21,18 @@ const UserCard = () => {
 
 	const getAllTravels = async () => {
 		const response = await axios.get("/api/travels")
-		setTravels(response.data)
+    console.log("travels profile" , response.data)
+    const filteredTravels =  response.data.filter(travel => travel?.owner?._id === user._id);
+    console.log("filtered travels", filteredTravels)
+		setTravels(filteredTravels)
+   
 	}
 
 	useEffect(() => {
 		getAllTravels()
 	}, [])
 
-
-  // const getUserTravels = async () => {
-  //   travels.map(travel => {
-  //     if (travel.owner._id === user._id) {
-  //       setUserTravels(travels.map(travel => travel._id === travel._id ? {...travel} : travel))
-  //     }
-  //   }
-  //   )
-  // }
-  // useEffect(() => {
-  //   getUserTravels()
-  // }
-  // , [])
-  // console.log("userTravels", userTravels);
-
-  const filterTravels = () => {
-    return travels.filter(travel => travel.owner._id === user._id)
-  } 
-  useEffect(() => {
-    setUserTravels(filterTravels())
-  }
-  , [])
-  console.log("userTravels", userTravels);
-
-
+  
 
   return (
     <div className="user-card">   
@@ -68,7 +48,7 @@ const UserCard = () => {
   
         <p>My trips</p>
         <div className="user-travels">
-          {userTravels.map(travel => (
+          {travels.map(travel => (
             <TravelCard className="usercard"
             destination={travel.destination}
             route={travel.route}
