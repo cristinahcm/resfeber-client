@@ -61,7 +61,7 @@ const TravelCard = ({
       
       <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor:"MediumAquaMarine" }} aria-label="recipe">
+          <Avatar sx={{ bgcolor:"#bae2f4", width:"30px", height:"30px", fontSize:"1rem"}}>
             {generateRandomLetter()}
           </Avatar>
         }

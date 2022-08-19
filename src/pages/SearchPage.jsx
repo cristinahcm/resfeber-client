@@ -734,9 +734,10 @@ export default function SearchPage() {
   }
 
   return (
-    <div className="app">
+    <div className="searchpage">
+        <div className="title-search">Explore</div>
       <div className="filter-container">
-        <div>Interests:</div>
+        Choose your interests:
         <div>
           <select
             name="category-list"

@@ -57,7 +57,7 @@ const UserCard = () => {
   return (
     <div className="user-card">   
 
-      <Avatar sx={{ bgcolor:"MediumAquaMarine" }} >
+      <Avatar sx={{ bgcolor:"#bae2f4" }} >
           </Avatar> 
           {user &&  (
             <> 
