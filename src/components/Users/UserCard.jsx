@@ -1,21 +1,14 @@
 import { Avatar } from "@mui/material";
 import axios from "../../context/axiosInstance.js";
-import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import TravelCard from "../TravelCard/TravelCard.jsx";
-
 import useAuth from "../../context/auth/useAuth";
 
-function generateRandomLetter() {
-  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-  return alphabet[Math.floor(Math.random() * alphabet.length)];
-}
 
 const UserCard = () => { 
   const auth = useAuth();
   const [user, setUser] = useState(auth.currentUser);
-  const [userTravels, setUserTravels] = useState([]);
-  const[ travels, setTravels ] = useState([]);
+  const [travels, setTravels] = useState([]);
   console.log("login user", auth.currentUser);
   console.log("user", user);
 
@@ -37,7 +30,7 @@ const UserCard = () => {
   return (
     <div className="user-card">   
 
-      <Avatar sx={{ bgcolor:"MediumAquaMarine" }} >
+      <Avatar sx={{ bgcolor:"#bae2f4" }} >
           </Avatar> 
           {user &&  (
             <> 

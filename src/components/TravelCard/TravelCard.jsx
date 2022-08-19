@@ -10,13 +10,11 @@ import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
-
-const API_URL = 'http://localhost:5005';
+import { generateRandomLetter } from "../../utils/utils";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -55,8 +53,8 @@ const TravelCard = ({
       
       <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
+          <Avatar sx={{ bgcolor:"#bae2f4", width:"30px", height:"30px", fontSize:"1rem"}}>
+            {generateRandomLetter()}
           </Avatar>
         }
         action={
