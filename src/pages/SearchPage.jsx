@@ -1,11 +1,13 @@
 import React from 'react'
 import dataUsers from '../dataUsers.json'
 import { useState } from 'react';
+import SelectComponent from '../components/Select/SelectComponent';
 
 export default function SearchPage() {
     const [searchTerm, setSearchTerm] = useState("")
     return (
         <div>
+            <SelectComponent />
             <input 
             type="text" 
             placeholder='Explore'

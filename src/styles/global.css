@@ -138,3 +138,12 @@ ul {
 	margin-top: 0.5rem;
 	text-align: center;
 }
+
+.searchpage {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
