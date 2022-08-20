@@ -96,6 +96,8 @@ const TravelCard = ({
           onClick={handleExpandClick}
           aria-expanded={expanded}
           aria-label="show more"
+          placeholder="show more"
+          label="show more"
         >
           <ExpandMoreIcon />
 
@@ -108,14 +110,13 @@ const TravelCard = ({
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>{route}</Typography>
-          <h1>Comments</h1>
+          <h4 sx={{display:"flex", justifyContent:"center", textAlign:"center"}}>Comments</h4>
           <form onSubmit={handleSubmit}>
           <TextField
             required
-            id="origin"
-            label="Origin"
-            name="origin"
-            placeholder="Origin"
+            id="comment"
+            name="comment"
+            placeholder="Write your comment"
              onChange={handleChange}
           />
           </form>

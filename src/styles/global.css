@@ -75,7 +75,6 @@ ul {
 	justify-content: center;
 	align-items: center;
 	margin-top: 6rem;
-
 }
 
 .swipe {
@@ -87,11 +86,6 @@ ul {
 	margin-top: 1rem;
 	margin-bottom: 2rem;
 	box-shadow: 0 20px 25px 0 rgba(109, 106, 106, 0.356);
-}
-
-.buttonstravel {
-	margin-top: 1rem;
-	margin-bottom: 6rem;
 }
 
 .dates {
@@ -162,8 +156,7 @@ ul {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: space-between;
-	align-items: center;
+	justify-content: flex-start;
 	text-align: center;
 }
 
@@ -202,4 +195,21 @@ select#category-list {
 	margin-bottom: 0.2rem;
 	margin-top: 1rem;
 	text-align: center;
+}
+
+h4 {
+	margin-bottom: 0.5rem;
+	margin-top: 1rem;
+}
+
+.MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiCard-root.css-1ri6ub7-MuiPaper-root-MuiCard-root {
+	margin-bottom: 10rem;
+}
+
+.cards-fav {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 3rem;
 }
