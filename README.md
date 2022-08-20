@@ -1,70 +1,160 @@
-# Getting Started with Create React App
+# Resfeber-App Client
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About
 
-## Available Scripts
+That mixture of feelings before you go to a trip is called Resfeber, we present this app.
+For all the travelers around the world,Resfeber is a social media app to share and join other people´s travels, and plan your next trip.
 
-In the project directory, you can run:
+## Views
 
-### `yarn start`
+Intro: Intro of the app, will present the logo, user will be starting to familiarize with the app, and enter the name.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Signup: User will signup in the app if is the first time using it.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Signin: User will login if already have create a profile before.
 
-### `yarn test`
+User-profile: User will see his data, the travels he creates, will be able to edit them and delete them.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Favorite Page: User will have all the travels he selected as Favorites.
 
-### `yarn build`
+Add Travel: user will create a travel, that other user will see and join.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Home: user can see all the travels users post and like them.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Search: user can search other user with same interest to check their travels.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### ROUTES
 
-### `yarn eject`
+All routes set with /api
+AUth created using boilerplate
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+| Travels ROUTES | VERB   | Description      | View          |
+| -------------- | ------ | ---------------- | ------------- |
+| /              | GET    | getl all travels | /home         |
+| /upload        | POST   | add new travel   | /createTravel |
+| /edit/:id      | PUT    | edit travels     | /profile      |
+| /:id           | GET    | travel details   | /home         |
+| /delete/:id    | delete | delete travel    | /profile      |
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+| User ROUTES | VERB | Description               | View         |
+| ----------- | ---- | ------------------------- | ------------ |
+| /edit       | PUT  | update info               | /profile     |
+| /like/:id   | PUT  | update isFavorite travels | /home        |
+| /:id        | get  | get users profile         | /userProfile |
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### MODELS
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+User model:
+{
+name: {
+type: String,
 
-## Learn More
+      unique: true,
+    },
+    travels: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Travel",
+      },
+    ],
+    email: {
+      type: String,
+      unique: true,
+    },
+    password: {
+      type: String,
+    },
+    picture: {
+      type: String,
+    },
+    interests: [
+      {
+        type: String,
+        enum: [
+          "Aventurer",
+          "Beach",
+          "Culture",
+          "Food",
+          "Nature",
+          "Nightlife",
+          "Shopping",
+        ],
+      },
+    ],
+    gender: {
+      enum: ["Female", "Male", "Other"],
+    },
+    age: {
+      type: Number,
+    },
+    comments: {
+      type: String,
+    },
+    isFavorite: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Travel",
+      },
+    ], // your favorites here id
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+},
+);
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+travelModel:
+{
+owner: {
+type: Schema.Types.ObjectId,
+ref: "User",
+},
+initialDate: {
+type: Date,
+},
+finalDate: {
+type: Date,
+},
+destination: {
+type: String,
+},
+typeTravel: {
+type: String,
+enum: ["Eco", "Family", "Friends", "Only Women", "Solo"],
+},
+origin: {
+type: String,
+},
+route: {
+type: String,
+},
+budget: {
+type: Number,
+},
+images: {
+type: String,
+},
 
-### Code Splitting
+    isPrivate: {
+      type: Boolean,
+      default: false,
+    },
+    comments: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Comment",
+      },
+    ],
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+},
 
-### Analyzing the Bundle Size
+commentsModel:
+{
+author: { type: Schema.Types.ObjectId, ref: "User" },
+travel: { type: Schema.Types.ObjectId, ref: "Travel" },
+text: {
+type: String,
+},
+stars: {
+type: Number,
+},
+});
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## links
