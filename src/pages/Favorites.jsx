@@ -26,8 +26,8 @@
 
   return (
     <div>
-      <h1>Favorites</h1>
-      <div className="favorites-conStainer">
+      <h1 className="h1form">Favorites</h1>
+      <div className="cards-fav">
         {travels.map(travel => (
         <TravelCard className="usercard"
         destination={travel.destination}
