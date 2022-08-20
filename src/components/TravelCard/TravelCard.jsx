@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react"
-import axios from "axios"
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -31,7 +30,6 @@ const ExpandMore = styled((props) => {
 
 
 const TravelCard = ({
-  owner,
   destination,
   route,
   origin,
@@ -65,9 +63,10 @@ const TravelCard = ({
             <MoreVertIcon />
           </IconButton>
         }
-        title=  {destination}   //{`${destination} ${owner}`}
+        title=  {destination}   
         subheader={`Initial Date: ${initialDate} - Final Date:${finalDate}`}
       />
+    
       <CardMedia
         component="img"
         height="194"

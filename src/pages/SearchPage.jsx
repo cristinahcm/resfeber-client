@@ -712,21 +712,15 @@ export default function SearchPage() {
   
 
   const [selectedInterest, setSelectedInterest] = useState();
-  // Add default value on page load
-  //useEffect(() => {
-    //setUserList(userData);
-  //}, []);
 
-  // Function to get filtered list
   function getFilteredList() {
-    // Avoid filter when selectedCategory is null
+    
     if (!selectedInterest) {
       return userList;
     }
     return userList.filter((user) => user.interests.split(" ").includes(selectedInterest));
   }
 
-  // Avoid duplicate function calls with useMemo
   const filteredList = useMemo(getFilteredList, [selectedInterest, userList]);
 
   function handleCategoryChange(event) {

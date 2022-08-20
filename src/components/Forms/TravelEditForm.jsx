@@ -1,10 +1,4 @@
-// import { useState } from "react";
-// import { useParams } from "react-router-dom"
-// import axios from "axios";
-// import { useNavigate } from "react-router-dom"
 
-
-// const API_URL = 'http://localhost:5005';
 
 const TravelEditForm  = ({handleEdit, handleChange, destination, route, budget, initialDate, finalDate, images}) => {
   return (

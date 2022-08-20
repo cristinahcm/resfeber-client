@@ -20,9 +20,7 @@ const UserCard = () => {
 
 	const getAllTravels = async () => {
 		const response = await axios.get("/api/travels")
-    console.log("travels profile" , response.data)
     const filteredTravels =  response.data.filter(travel => travel?.owner?._id === user._id);
-    console.log("filtered travels", filteredTravels)
 		setTravels(filteredTravels)
    
 	}

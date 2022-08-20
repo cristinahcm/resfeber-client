@@ -4,7 +4,7 @@ import axios from "../context/axiosInstance.js";
 import { useEffect, useState } from "react";
 import "./Home.css";
 import useAuth from "../context/auth/useAuth";
-import { Box } from "@mui/material";
+
 
 
 const Home = () => {
@@ -28,14 +28,13 @@ const handleLike = async (travelId) => {
 	const response = await axios.put(`/api/users/like/${auth.currentUser._id}`, {isFavorite: travelId});
 	const newTravels = travels.filter(travel => travel._id !== travelId)
 	setTravels(newTravels);
-	console.log(travelId)
+
 } 
 
 
 const handleDislike =  (travelId) => {
 	const newTravels = travels.filter(travel => travel._id !== travelId)
 	setTravels(newTravels)
-
 }
 
 		
@@ -43,6 +42,7 @@ const handleDislike =  (travelId) => {
 		return (
 			<div className="cards">
 	{travels.map((travel) => {
+
 					return (
 						<>
 						<TravelCard className="usercard"
@@ -55,6 +55,7 @@ const handleDislike =  (travelId) => {
 						typeTravel={travel.typeTravel}
 						images={travel.images}
 						_id = {travel._id}
+					
 						handleLike = {() => handleLike(travel._id)}
 						handleDislike = {() => handleDislike(travel._id)}
 						/>

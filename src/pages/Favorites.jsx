@@ -39,7 +39,7 @@
         typeTravel={travel.typeTravel}
         images={travel.images}
         _id = {travel._id}
-        // handleDislike = {() => handleDislike(travel._id)}
+       
         />
          
         ))}
