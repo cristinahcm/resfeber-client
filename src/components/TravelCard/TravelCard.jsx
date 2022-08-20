@@ -15,6 +15,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import { generateRandomLetter } from "../utils/utils";
+import TextField from '@mui/material/TextField';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -40,8 +41,10 @@ const TravelCard = ({
   typeTravel,
   handleLike,
   handleDislike, 
-  images,
-  _id
+  handleSubmit,
+  handleChange,
+
+ 
 }) => {
   const [expanded, setExpanded] = React.useState(false);
 
@@ -96,6 +99,7 @@ const TravelCard = ({
           aria-label="show more"
         >
           <ExpandMoreIcon />
+
         </ExpandMore>
         <IconButton aria-label="add to favorites" onClick = {handleLike} >
         <FavoriteBorderOutlinedIcon  />
@@ -105,6 +109,17 @@ const TravelCard = ({
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>{route}</Typography>
+          <h1>Comments</h1>
+          <form onSubmit={handleSubmit}>
+          <TextField
+            required
+            id="origin"
+            label="Origin"
+            name="origin"
+            placeholder="Origin"
+             onChange={handleChange}
+          />
+          </form>
         </CardContent>
       </Collapse>
     </Card>
